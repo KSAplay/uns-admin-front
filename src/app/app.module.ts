@@ -19,7 +19,8 @@ import { GestionNoticiasComponent } from './components/gestion-noticias/gestion-
     SideBarComponent,
     LoginComponent,
     PrincipalComponent,
-    GestionNoticiasComponent
+    GestionNoticiasComponent,
+    
   ],
   imports: [
     BrowserModule,
