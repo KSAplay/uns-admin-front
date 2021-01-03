@@ -9,13 +9,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { MenuBarComponent } from './components/menu-bar/menu-bar.component';
 import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { LoginComponent } from './components/login/login.component';
+import { PrincipalComponent } from './components/principal/principal.component';
+import { GestionNoticiasComponent } from './components/gestion-noticias/gestion-noticias.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuBarComponent,
     SideBarComponent,
-    LoginComponent
+    LoginComponent,
+    PrincipalComponent,
+    GestionNoticiasComponent
   ],
   imports: [
     BrowserModule,
