@@ -9,10 +9,13 @@ import {MenuItem} from 'primeng/api';
 export class MenuBarComponent implements OnInit {
 
    items: MenuItem[];
+   opciones: MenuItem[];
 
   constructor() { }
 
   ngOnInit(): void {
+
+    this.opciones = [];
 
     this.items = [
      /* {
