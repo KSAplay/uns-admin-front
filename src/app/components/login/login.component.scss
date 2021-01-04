@@ -13,6 +13,12 @@
   }
 
   /*---------------------------------------------*/
+  .uns{
+    font-size: 50px;
+    color: $rojoPrimario;
+  }
+
+  /*---------------------------------------------*/
   input {
       outline: none;
       border: none;
@@ -78,7 +84,7 @@
     justify-content: center;
     align-items: center;
     padding: 15px;
-    background: #ebeeef;
+    background: #d9dbdb;
   }
   
   
@@ -118,7 +124,7 @@
     font-size: 30px;
     color: #fff;
     text-transform: uppercase;
-    line-height: 1.2;
+    line-height: 1;
     text-align: center;
   }
   
@@ -131,7 +137,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    background-color: rgba(54,84,99,0.7);
+    background-color: rgba(104, 104, 104, 0.7);
   }
   
   
