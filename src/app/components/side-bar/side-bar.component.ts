@@ -18,43 +18,42 @@ export class SideBarComponent implements OnInit {
             {
                 label: 'Secciones', icon: 'fas fa-tasks',
                 items: [
-                        {label: 'Agregar', icon:' pi pi-fw pi-plus', routerLink: 'secciones/agregar'},
                         {label: 'Ver todos', icon: 'pi pi-fw pi-list', routerLink: 'secciones/listar'}
                 ]
             },
             {
                 label: 'Noticias', icon: 'far fa-newspaper',
                 items: [
-                    {label: 'Agregar', icon:' pi pi-fw pi-plus'},
-                    {label: 'Ver todos', icon: 'pi pi-fw pi-list'}
+                    {label: 'Agregar', icon:' pi pi-fw pi-plus', routerLink: 'noticias/agregar'},
+                    {label: 'Ver todos', icon: 'pi pi-fw pi-list', routerLink: 'noticias/listar'}
                 ]
             },
             {
-                label: 'Eventos', icon: 'fas fa-calendar',
+                label: 'Comunicados', icon: 'fas fa-calendar',
                 items: [
-                    {label: 'Agregar', icon:' pi pi-fw pi-plus'},
-                    {label: 'Ver todos', icon: 'pi pi-fw pi-list'}
+                    {label: 'Agregar', icon:' pi pi-fw pi-plus', routerLink: 'comunicados/agregar'},
+                    {label: 'Ver todos', icon: 'pi pi-fw pi-list', routerLink: 'comunicados/listar'}
                 ]
             },
             {
                 label: 'Sliders', icon: 'far fa-images',
                 items: [
-                    {label: 'Agregar', icon:' pi pi-fw pi-plus'},
-                    {label: 'Ver todos', icon: 'pi pi-fw pi-list'}
+                    {label: 'Agregar', icon:' pi pi-fw pi-plus', routerLink: 'sliders/agregar'},
+                    {label: 'Ver todos', icon: 'pi pi-fw pi-list', routerLink: 'sliders/listar'}
                 ]
             },
             {
                 label: 'Vinculos', icon: 'fas fa-external-link-alt',
                 items: [
-                    {label: 'Agregar', icon:' pi pi-fw pi-plus'},
-                    {label: 'Ver todos', icon: 'pi pi-fw pi-list'}
+                    {label: 'Agregar', icon:' pi pi-fw pi-plus', routerLink: 'vinculos/agregar'},
+                    {label: 'Ver todos', icon: 'pi pi-fw pi-list', routerLink: 'vinculos/listar'}
                 ]
             },
             {
                 label: 'Menus', icon: 'fas fa-bars',
                 items: [
-                    {label: 'Agregar     ', icon:' pi pi-fw pi-plus'},
-                    {label: 'Ver todos', icon: 'pi pi-fw pi-list'}
+                    {label: 'Agregar', icon:' pi pi-fw pi-plus', routerLink: 'menus/agregar'},
+                    {label: 'Ver todos', icon: 'pi pi-fw pi-list', routerLink: 'menus/listar'}
                 ]
             },
         ]
