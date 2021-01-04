@@ -17,7 +17,7 @@ import { NotPageComponent } from './components/not-page/not-page.component';
 import { PrincipalComponent } from './components/principal/principal.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'inicio', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
  
   { path: '', component: PrincipalComponent, children: [
