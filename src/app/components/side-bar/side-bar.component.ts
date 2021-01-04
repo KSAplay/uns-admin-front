@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MegaMenuItem, MenuItem } from 'primeng/api';
+import { MenuItem } from 'primeng/api';
 
 @Component({
     selector: 'app-side-bar',
@@ -16,43 +16,46 @@ export class SideBarComponent implements OnInit {
     ngOnInit(): void {
         this.items = [
             {
-                label: 'Secciones', icon: 'pi pi-fw pi-list',
+                label: 'Secciones', icon: 'fas fa-tasks',
                 items: [
-                        {label: 'Agregar nueva', icon:' pi pi-fw pi-plus'},
-                        {label: 'Listar'}
+                        {label: 'Agregar', icon:' pi pi-fw pi-plus', routerLink: 'secciones/agregar'},
+                        {label: 'Ver todos', icon: 'pi pi-fw pi-list', routerLink: 'secciones/listar'}
                 ]
             },
             {
-                label: 'Noticias', icon: 'pi pi-fw pi-globe',
+                label: 'Noticias', icon: 'far fa-newspaper',
                 items: [
-                        {label: 'Agregar nueva'},
-                        {label: 'Listar'}
+                    {label: 'Agregar', icon:' pi pi-fw pi-plus'},
+                    {label: 'Ver todos', icon: 'pi pi-fw pi-list'}
                 ]
             },
             {
-                label: 'Eventos', icon: 'pi pi-fw pi-users',
+                label: 'Eventos', icon: 'fas fa-calendar',
                 items: [
-                        {label: 'Agregar nueva'},
-                        {label: 'Listar'}
+                    {label: 'Agregar', icon:' pi pi-fw pi-plus'},
+                    {label: 'Ver todos', icon: 'pi pi-fw pi-list'}
                 ]
             },
             {
-                label: 'Sliders', icon: 'pi pi-fw pi-users',
+                label: 'Sliders', icon: 'far fa-images',
                 items: [
-                        {label: 'Agregar nueva'},
-                        {label: 'Listar'}
+                    {label: 'Agregar', icon:' pi pi-fw pi-plus'},
+                    {label: 'Ver todos', icon: 'pi pi-fw pi-list'}
                 ]
             },
             {
-                label: 'Enlaces', icon: 'pi pi-fw pi-users',
+                label: 'Vinculos', icon: 'fas fa-external-link-alt',
                 items: [
-                        {label: 'Agregar nueva'},
-                        {label: 'Listar'}
+                    {label: 'Agregar', icon:' pi pi-fw pi-plus'},
+                    {label: 'Ver todos', icon: 'pi pi-fw pi-list'}
                 ]
             },
             {
-                label: 'Menus', icon: 'pi pi-fw pi-users',
-               
+                label: 'Menus', icon: 'fas fa-bars',
+                items: [
+                    {label: 'Agregar     ', icon:' pi pi-fw pi-plus'},
+                    {label: 'Ver todos', icon: 'pi pi-fw pi-list'}
+                ]
             },
         ]
     }

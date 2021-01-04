@@ -15,7 +15,7 @@ export class MenuBarComponent implements OnInit {
   ngOnInit(): void {
 
     this.items = [
-      {
+     /* {
           label: 'File',
           items: [{
                   label: 'New', 
@@ -36,7 +36,7 @@ export class MenuBarComponent implements OnInit {
               {label: 'Delete', icon: 'pi pi-fw pi-trash'},
               {label: 'Refresh', icon: 'pi pi-fw pi-refresh'}
           ]
-      }
+      }*/
   ];
 
   }

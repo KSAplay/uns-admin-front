@@ -7,7 +7,8 @@ import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
 import { SharedModule } from 'primeng/api';
 import {TieredMenuModule} from 'primeng/tieredmenu';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {SplitButtonModule} from 'primeng/splitbutton';
 
 
 @NgModule({
@@ -20,7 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ButtonModule,
     SharedModule,
     TieredMenuModule,
-    BrowserAnimationsModule
+    SplitButtonModule
 
   ],
   exports:  [
@@ -30,7 +31,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ButtonModule,
     SharedModule,
     TieredMenuModule,
-    BrowserAnimationsModule
+    SplitButtonModule
   ]
 })
 export class PrimengModule { }
