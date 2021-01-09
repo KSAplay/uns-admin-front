@@ -1,0 +1,12 @@
+{
+    "data":[
+        {
+            "srcImage": "assets/images/galleria/galleria1.jpg",
+            "alt": "Description for Image 1"
+        },
+        {
+            "srcImage": "assets/images/galleria/galleria2.jpg",
+            "alt": "Description for Image 2"
+        }
+    ]
+}

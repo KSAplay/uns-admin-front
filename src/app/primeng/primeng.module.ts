@@ -9,6 +9,10 @@ import {SharedModule} from 'primeng/api';
 import {TieredMenuModule} from 'primeng/tieredmenu';
 import {SplitButtonModule} from 'primeng/splitbutton';
 import {TableModule} from 'primeng/table';
+import {MultiSelectModule} from 'primeng/multiselect';
+import {DropdownModule} from 'primeng/dropdown';
+import {SliderModule} from 'primeng/slider';
+import {ProgressBarModule} from 'primeng/progressbar';
 
 
 @NgModule({
@@ -22,9 +26,11 @@ import {TableModule} from 'primeng/table';
     SharedModule,
     TieredMenuModule,
     SplitButtonModule,
-    TableModule
-
-
+    TableModule,
+    MultiSelectModule,
+    DropdownModule,
+    SliderModule,
+    ProgressBarModule
   ],
   exports:  [
     MegaMenuModule,
@@ -34,7 +40,11 @@ import {TableModule} from 'primeng/table';
     SharedModule,
     TieredMenuModule,
     SplitButtonModule,
-    TableModule
+    TableModule,
+    MultiSelectModule,
+    DropdownModule,
+    SliderModule,
+    ProgressBarModule
   ]
 })
 export class PrimengModule { }
