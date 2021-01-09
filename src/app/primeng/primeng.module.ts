@@ -8,6 +8,7 @@ import {ButtonModule} from 'primeng/button';
 import {SharedModule} from 'primeng/api';
 import {TieredMenuModule} from 'primeng/tieredmenu';
 import {SplitButtonModule} from 'primeng/splitbutton';
+import {TableModule} from 'primeng/table';
 
 
 @NgModule({
@@ -20,7 +21,9 @@ import {SplitButtonModule} from 'primeng/splitbutton';
     ButtonModule,
     SharedModule,
     TieredMenuModule,
-    SplitButtonModule
+    SplitButtonModule,
+    TableModule
+
 
   ],
   exports:  [
@@ -30,7 +33,8 @@ import {SplitButtonModule} from 'primeng/splitbutton';
     ButtonModule,
     SharedModule,
     TieredMenuModule,
-    SplitButtonModule
+    SplitButtonModule,
+    TableModule
   ]
 })
 export class PrimengModule { }
