@@ -1,1 +1,67 @@
-<p>gestion-noticias works!</p>
+
+<div class="card">
+    <div class="titulo">NOTICIAS</div>
+    <p-table #dt2 [value]="noticias" dataKey="id"
+        [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,15,20]" [loading]="false" styleClass="p-datatable-noticias"
+        [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['Titular','Fecha','Visibilidad']">
+
+        <ng-template pTemplate="caption">
+            <div class="p-d-flex">
+                <span class="p-input-icon-left p-ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt2.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+                </span>
+            </div>
+        </ng-template>
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Imagen</th>
+                <th>Titular</th>
+                <th>Fecha</th>
+                <th>Visibilidad</th>
+                <th>Acciones</th>
+            </tr>
+            <tr>
+                <th></th>
+                <th>
+                    <p-columnFilter type="text" field="Titular"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="text" field="Fecha"></p-columnFilter>
+                </th>
+                <th>
+                    <p-columnFilter type="boolean" field="Visibilidad"></p-columnFilter>
+                </th>
+                <th></th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-customer>
+            <tr>
+                <td>
+                    <img class="imgNoticia" src="{{ noticias.srcImage }}" alt="">
+                </td>
+                <td>
+                    <span class="text">{{ noticias.title }}</span>
+                </td>
+                <td>
+                    <span class="text">{{ noticias.fecha }}</span>
+                </td>
+                <td>
+                    <i class="pi" [ngClass]="{'true-icon pi-check-circle': noticias.visible, 'false-icon pi-times-circle': !noticias.visible}"></i>
+                </td>
+                <td>
+                    <button pButton pRipple type="button" label=" " class="btnEditar p-button-warning"><i class="pi pi-pencil"></i></button>
+                    <button pButton pRipple type="button" label=" " class="btnEliminar p-button-danger"><i class="pi pi-times"></i></button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="5">Ninguna noticia encontrada.</td>
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

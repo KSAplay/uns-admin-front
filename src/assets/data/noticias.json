@@ -1,0 +1,95 @@
+{
+    "data":[
+        {
+            "srcImage": "https://www.uns.edu.pe/recursos/noticias/30103beac474713c2a51bffa520c63ce.jpg",
+            "title": "Uns renueva edificio de la escuela de postgrado",
+            "fecha": "11 de diciembre del 2020",
+            "visible": true
+        },
+        {
+            "srcImage": "https://www.uns.edu.pe/recursos/noticias/4c21810ae76c39163d57f163a468eeb0.jpg",
+            "title": "Uns inaugura imponente complejo deportivo",
+            "fecha": "8 de diciembre del 2020",
+            "visible": true
+        },
+        {
+            "srcImage": "https://www.uns.edu.pe/recursos/noticias/7f3f79e0f9fa0cd1d8a216380ba56874.png",
+            "title": "Egresados y estudiantes de derecho de la UNS organizan primero modelo de naciones unidaes en Áncash",
+            "fecha": "12 de noviembre del 2020",
+            "visible": true
+        },
+        {
+            "srcImage": "https://www.uns.edu.pe/recursos/noticias/def13348b91a21ae202cc369416af4be.jpg",
+            "title": "Reconocen a joven por ocupar primer puesto en cómputo general",
+            "fecha": "12 de noviembre del 2020",
+            "visible": true
+        },
+        {
+            "srcImage": "https://www.uns.edu.pe/recursos/noticias/6db5b68cffa9925c8648ac3fcc9479de.49.00%20PM.jpeg",
+            "title": "Trabajadores de la UNS reciben kit de bioseguridad al retornar a sus labores",
+            "fecha": "5 de octubre del 2020",
+            "visible": true
+        },
+        {
+            "srcImage": "https://www.uns.edu.pe/recursos/noticias/36fa0b2055977de706a9e1f4d0b0c211.jpg",
+            "title": "UNS apoya aprobación de ley para creación e implementación del Parque Científico Tecnológico",
+            "fecha": "1 de octubre del 2020",
+            "visible": true
+        },
+        {
+            "srcImage": "https://www.uns.edu.pe/recursos/noticias/2062e9763cd94fff142fffda5d7fc8a5.jpg",
+            "title": "Personal administrativo de la UNS es capacitado en el marco de la ejecución del plan COVID-19",
+            "fecha": "28 de septiembre del 2020",
+            "visible": true
+        },
+        {
+            "srcImage": "https://www.uns.edu.pe/recursos/noticias/7891160bb7b9448f510fa8a00495b69c.jpg",
+            "title": "Santeña entre los 100 jóvenes líderes en Biotecnología de Latinoamérica",
+            "fecha": "25 de septiembre del 2020",
+            "visible": true
+        },
+        {
+            "srcImage": "https://www.uns.edu.pe/recursos/noticias/6a577b8081e33d8b3b25fb521bfc8694.jpg",
+            "title": "Maestristas y Doctorandos inciaron clases virtuales de la UNS",
+            "fecha": "19 de septiembre del 2020",
+            "visible": true
+        },
+        {
+            "srcImage": "https://www.uns.edu.pe/recursos/noticias/da84e842a81111c0bc9910a8f5080f1a.png",
+            "title": "Primera sustentación virtual de informe final de tesis en la UNS",
+            "fecha": "31 de julio del 2020",
+            "visible": true
+        },
+        {
+            "srcImage": "https://www.uns.edu.pe/recursos/noticias/8cb124dd4bcda41e4c256c676e6a8e2c.jpg",
+            "title": "Rector reconoció labor de docentes de la UNS, quienes ante la emergencia sanitaria se adaptaron",
+            "fecha": "10 de julio del 2020",
+            "visible": true
+        },
+        {
+            "srcImage": "https://www.uns.edu.pe/recursos/noticias/7a5939a7d9035970470ec4c6d9c05d16.01.15%20PM%20(2).jpeg",
+            "title": "UNS entregó dispositivos de internet móvil a sus estudiantes de bajos recursos económicos",
+            "fecha": "17 de junio del 2020",
+            "visible": true
+        },
+        {
+            "srcImage": "https://www.uns.edu.pe/recursos/noticias/033fc6553810938d7215a7c28106d18c.jpeg",
+            "title": "Ministro de Educación felicita a la UNS por ofrecer servicio educativo no presencial",
+            "fecha": "1 de junio del 2020",
+            "visible": true
+        },
+        {
+            "srcImage": "https://www.uns.edu.pe/recursos/noticias/33ce8cd3e3a0f1033c78c2153a1953a5.jpg",
+            "title": "Enfermero egresado de la UNS integra brigada de ayuda a Loretanos",
+            "fecha": "23 de mayo del 2020",
+            "visible": true
+        },
+        {
+            "srcImage": "https://www.uns.edu.pe/recursos/noticias/7f203cc535beda85efacc6a3c29335b9.jpeg",
+            "title": "UNS prestará equipo de Biología Molecular al MINSA para pruebas de COVID-19",
+            "fecha": "30 de abril del 2020",
+            "visible": true
+        }
+
+    ]
+}
