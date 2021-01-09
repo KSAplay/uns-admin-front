@@ -1,5 +1,6 @@
 export interface Tema {
     descripcion: string;
+    tema_code: string;
     color_fondo: string;
     color_titulo: string;
     color_flecha_carrousel: string;

@@ -1,0 +1,24 @@
+.previo{
+    padding-left: 7%;
+    padding-right: 7%;
+    font-weight: bold;
+    color: #E80035;
+
+}
+
+.clr_rojo{
+    background-color:#E80035;
+    color: white;
+}
+
+.clr_blanco{
+    background-color: white;
+}
+
+.clr_gris{
+    background-color:  #F5F5F5;
+}
+
+::ng-deep .p-dropdown {
+    width: 200px;
+}

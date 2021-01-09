@@ -6,13 +6,27 @@
             "posicion" : 1,
             "nombre": "Noticias",
             "frontend_id": "string",
-            "visible": true
+            "visible": true,
+            "tema":
+                {
+                    "tema_code": "clr_blanco",
+                    "descripcion": "Tema Blanco"
+                }
+            
+            
+
         },
         {
             "posicion" : 2,
             "nombre": "Comunicados",
             "frontend_id": "string",
-            "visible": false
+            "visible": false,
+            "tema":
+                {
+                    "tema_code": "clr_rojo",
+                    "descripcion": "Tema Rojo"
+                }
+            
         }
     ]
 }
