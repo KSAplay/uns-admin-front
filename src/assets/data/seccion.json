@@ -1,0 +1,18 @@
+
+
+{
+    "data":[
+        {
+            "posicion" : 1,
+            "nombre": "Noticias",
+            "frontend_id": "string",
+            "visible": true
+        },
+        {
+            "posicion" : 2,
+            "nombre": "Comunicados",
+            "frontend_id": "string",
+            "visible": false
+        }
+    ]
+}

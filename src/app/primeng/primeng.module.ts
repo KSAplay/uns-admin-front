@@ -9,6 +9,8 @@ import {SharedModule} from 'primeng/api';
 import {TieredMenuModule} from 'primeng/tieredmenu';
 import {SplitButtonModule} from 'primeng/splitbutton';
 import {TableModule} from 'primeng/table';
+import {ToggleButtonModule} from 'primeng/togglebutton';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,7 +24,9 @@ import {TableModule} from 'primeng/table';
     SharedModule,
     TieredMenuModule,
     SplitButtonModule,
-    TableModule
+    TableModule,
+    ToggleButtonModule,
+    FormsModule
 
 
   ],
@@ -34,7 +38,9 @@ import {TableModule} from 'primeng/table';
     SharedModule,
     TieredMenuModule,
     SplitButtonModule,
-    TableModule
+    TableModule,
+    ToggleButtonModule,
+    FormsModule
   ]
 })
 export class PrimengModule { }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Seccion } from 'src/app/models/seccion';
+import { SeccionService } from 'src/app/services/seccion.service';
 
 @Component({
   selector: 'app-gestion-secciones',
@@ -6,10 +8,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./gestion-secciones.component.scss']
 })
 export class GestionSeccionesComponent implements OnInit {
+  
+  secciones: Seccion[];
 
-  constructor() { }
+  constructor(private seccionService:SeccionService) { 
+
+  }
 
   ngOnInit(): void {
+    this.seccionService.getSeccion().then(secciones => this.secciones = secciones);
+
   }
 
 }

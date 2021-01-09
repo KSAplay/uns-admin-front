@@ -27,6 +27,7 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { NotPageComponent } from './components/not-page/not-page.component';
 import { GestionComunicadosComponent } from './components/gestion-comunicados/gestion-comunicados.component';
 import { AgregarComunicadosComponent } from './components/gestion-comunicados/agregar-comunicados/agregar-comunicados.component';
+import { SeccionService } from './services/seccion.service';
 
 @NgModule({
   declarations: [
@@ -59,7 +60,9 @@ import { AgregarComunicadosComponent } from './components/gestion-comunicados/ag
     BrowserAnimationsModule
 
   ],
-  providers: [],
+  providers: [
+    
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
