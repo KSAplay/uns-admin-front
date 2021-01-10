@@ -1,19 +1,20 @@
-
 <div class="p-grid">
     <div class="p-col">
         <div class="card">
             <div class="titulo">NOTICIAS</div>
-            <p-table #dt [value]="noticias" dataKey="id"
-                [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,15,20]" [loading]="false" styleClass="p-datatable-noticias"
-                [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            <p-table #dt [value]="noticias" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+                [rowsPerPageOptions]="[10,15,20]" [loading]="false" styleClass="p-datatable-noticias" [paginator]="true"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
                 [globalFilterFields]="['title','fecha','visible']">
 
                 <ng-template pTemplate="caption">
                     <div class="p-d-flex">
-                        <p-button (click)="mostrarModalAgregarNoticia()" label="Agregar Noticia" icon="pi pi-plus" styleClass="p-button-info"></p-button>
+                        <p-button (click)="mostrarModalAgregarNoticia()" label="Agregar Noticia" icon="pi pi-plus"
+                            styleClass="p-button-info"></p-button>
                         <span class="p-input-icon-left p-ml-auto">
                             <i class="pi pi-search"></i>
-                            <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Buscar noticia" />
+                            <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                placeholder="Buscar noticia" />
                         </span>
                     </div>
                 </ng-template>
@@ -39,12 +40,15 @@
                         <td>
                             <span class="text">{{ noticia.fecha }}</span>
                         </td>
-                            <td>
-                                <p-toggleButton styleClass="p-button-rounded" [(ngModel)]="noticia.visible" onIcon="fas fa-eye" offIcon="fas fa-eye-slash"></p-toggleButton>
-                            </td>
                         <td>
-                            <p-button (click)="mostrarModalEditarNoticia()" icon="pi pi-pencil" label="" styleClass="p-button-warning" class="btnSpace"></p-button>
-                            <p-button (click)="eliminarNoticia()" icon="pi pi-times" label="" styleClass="btnEliminar p-button-danger"></p-button>
+                            <p-toggleButton styleClass="p-button-rounded" [(ngModel)]="noticia.visible"
+                                onIcon="fas fa-eye" offIcon="fas fa-eye-slash"></p-toggleButton>
+                        </td>
+                        <td>
+                            <p-button (click)="mostrarModalEditarNoticia()" icon="pi pi-pencil" label=""
+                                styleClass="p-button-warning" class="btnSpace"></p-button>
+                            <p-button (click)="eliminarNoticia()" icon="pi pi-times" label=""
+                                styleClass="btnEliminar p-button-danger"></p-button>
                         </td>
                     </tr>
                 </ng-template>
@@ -65,7 +69,8 @@
     <form class="formulario">
         <div class="form-group">
             <input type="file" style="display: none;" (change)="onPhotoSelected($event)" #photoInput>
-            <img [src]="photoSelected || '../../../assets/resources/noticias/no-image.png'" class="img-fluid" alt="Ninguna imagen" (click)="photoInput.click()">
+            <img [src]="photoSelected || '../../../assets/resources/noticias/no-image.png'" class="img-fluid"
+                alt="Ninguna imagen" (click)="photoInput.click()">
         </div>
         <div class="form-group">
             <div class="tituloModal">Titular</div>
@@ -73,14 +78,16 @@
         </div>
         <div class="form-group">
             <div class="tituloModal">Fecha</div>
-            <input type="text" class="p-inputtext" class="fecha" pInputText requerid/>
+            <input type="text" class="p-inputtext" class="fecha" pInputText requerid />
         </div>
     </form>
 
     <ng-template pTemplate="footer">
         <div class="botonesFooter">
-            <p-button (click)="actualizarNoticia()" label="Actualizar" icon="pi pi-check" styleClass="p-button-success" class="btnSpace"></p-button>
-            <p-button (click)="displayModalEditarNoticia = false" label="Cancelar" icon="pi pi-times" styleClass="p-button-danger"></p-button>
+            <p-button (click)="actualizarNoticia()" label="Actualizar" icon="pi pi-check" styleClass="p-button-success"
+                class="btnSpace"></p-button>
+            <p-button (click)="displayModalEditarNoticia = false" label="Cancelar" icon="pi pi-times"
+                styleClass="p-button-danger"></p-button>
         </div>
     </ng-template>
 
@@ -92,7 +99,8 @@
     <form class="formulario">
         <div class="form-group">
             <input type="file" style="display: none;" (change)="onPhotoSelected($event)" #photoInput>
-            <img [src]="photoSelected || '../../../assets/resources/noticias/no-image.png'" class="img-fluid" alt="Ninguna imagen" (click)="photoInput.click()">
+            <img [src]="photoSelected || '../../../assets/resources/noticias/no-image.png'" class="img-fluid"
+                alt="Ninguna imagen" (click)="photoInput.click()">
         </div>
         <div class="form-group">
             <div class="tituloModal">Titular</div>
@@ -100,14 +108,16 @@
         </div>
         <div class="form-group">
             <div class="tituloModal">Fecha</div>
-            <input type="text" class="p-inputtext" class="fecha" pInputText requerid/>
+            <input type="text" class="p-inputtext" class="fecha" pInputText requerid />
         </div>
     </form>
 
     <ng-template pTemplate="footer">
         <div class="botonesFooter">
-            <p-button (click)="agregarNoticia()" label="Agregar" icon="pi pi-check" styleClass="p-button-success" class="btnSpace"></p-button>
-            <p-button (click)="displayModalAgregarNoticia = false" label="Cancelar" icon="pi pi-times" styleClass="p-button-danger"></p-button>
+            <p-button (click)="agregarNoticia()" label="Agregar" icon="pi pi-check" styleClass="p-button-success"
+                class="btnSpace"></p-button>
+            <p-button (click)="displayModalAgregarNoticia = false" label="Cancelar" icon="pi pi-times"
+                styleClass="p-button-danger"></p-button>
         </div>
     </ng-template>
 
