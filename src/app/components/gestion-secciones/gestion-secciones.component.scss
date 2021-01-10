@@ -1,3 +1,5 @@
+@import '../../../assets/shared/colores.scss';
+
 .previo{
     padding-left: 7%;
     padding-right: 7%;
@@ -19,6 +21,19 @@
     background-color:  #F5F5F5;
 }
 
+.titulo{
+    width: 100%;
+    height: auto;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: $titulo;
+    margin: 2% 0%;
+}
+
+
 ::ng-deep .p-dropdown {
     width: 200px;
 }
+
+
