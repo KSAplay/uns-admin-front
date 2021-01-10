@@ -10,11 +10,11 @@ import {TieredMenuModule} from 'primeng/tieredmenu';
 import {SplitButtonModule} from 'primeng/splitbutton';
 import {TableModule} from 'primeng/table';
 import {ToggleButtonModule} from 'primeng/togglebutton';
-import { FormsModule } from '@angular/forms';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {DropdownModule} from 'primeng/dropdown';
 import {SliderModule} from 'primeng/slider';
 import {ProgressBarModule} from 'primeng/progressbar';
+import {ToastModule} from 'primeng/toast';
 
 
 @NgModule({
@@ -30,11 +30,11 @@ import {ProgressBarModule} from 'primeng/progressbar';
     SplitButtonModule,
     TableModule,
     ToggleButtonModule,
-    FormsModule,
     MultiSelectModule,
     DropdownModule,
     SliderModule,
-    ProgressBarModule
+    ProgressBarModule,
+    ToastModule
   ],
   exports:  [
     MegaMenuModule,
@@ -46,11 +46,11 @@ import {ProgressBarModule} from 'primeng/progressbar';
     SplitButtonModule,
     TableModule,
     ToggleButtonModule,
-    FormsModule,
     MultiSelectModule,
     DropdownModule,
     SliderModule,
-    ProgressBarModule
+    ProgressBarModule,
+    ToastModule
   ]
 })
 export class PrimengModule { }

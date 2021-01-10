@@ -27,8 +27,8 @@ import { InicioComponent } from './components/inicio/inicio.component';
 import { NotPageComponent } from './components/not-page/not-page.component';
 import { GestionComunicadosComponent } from './components/gestion-comunicados/gestion-comunicados.component';
 import { AgregarComunicadosComponent } from './components/gestion-comunicados/agregar-comunicados/agregar-comunicados.component';
-import { SeccionService } from './services/seccion.service';
-
+import { MessageService } from 'primeng/api';
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,11 +57,12 @@ import { SeccionService } from './services/seccion.service';
     AppRoutingModule,
     PrimengModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
 
   ],
   providers: [
-    
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

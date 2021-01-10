@@ -1,6 +1,6 @@
 <div class="p-grid">
     <div class="p-col">
-        <p-table [value]="secciones">
+        <p-table [value]="secciones"  >
             <ng-template pTemplate="header">
                 <tr>
                     <th>Nombre</th>
@@ -12,7 +12,7 @@
                 <tr>
                     <td>{{seccion.nombre}}</td>
                     <td>
-                    <p-dropdown [options]="temas" [(ngModel)]="seccion.tema.tema_code" optionLabel="descripcion"
+                    <p-dropdown (onChange)="cambioTema($event)" [options]="temas" [(ngModel)]="seccion.tema.tema_code" optionLabel="descripcion"
                             optionValue="tema_code">
 
                             <ng-template pTemplate="selectedItem">
@@ -29,7 +29,7 @@
 
                     </td>
                     <td>
-                        <p-toggleButton styleClass="p-button-rounded" [(ngModel)]="seccion.visible" onIcon="fas fa-eye"
+                        <p-toggleButton (onChange)="cambioVisibilidad($event)" styleClass="p-button-rounded" [(ngModel)]="seccion.visible" onIcon="fas fa-eye"
                             offIcon="fas fa-eye-slash"></p-toggleButton>
                     </td>
                 </tr>

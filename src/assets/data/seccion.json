@@ -10,7 +10,7 @@
             "tema":
                 {
                     "tema_code": "clr_blanco",
-                    "descripcion": "Tema Blanco"
+                    "descripcion": "Blanco"
                 }
             
             
@@ -24,7 +24,7 @@
             "tema":
                 {
                     "tema_code": "clr_rojo",
-                    "descripcion": "Tema Rojo"
+                    "descripcion": "Rojo"
                 }
             
         }
