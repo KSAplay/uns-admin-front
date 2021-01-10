@@ -11,36 +11,71 @@ import { TemaService } from 'src/app/services/tema.service';
   styleUrls: ['./gestion-secciones.component.scss']
 })
 export class GestionSeccionesComponent implements OnInit {
-  
+
   secciones: Seccion[];
   temas: Tema[];
+  loading: boolean;
 
-  constructor(private mensajeService: MensajeService,private seccionService:SeccionService, private temaService: TemaService) { 
+
+  constructor(private mensajeService: MensajeService, private seccionService: SeccionService, private temaService: TemaService) {
 
   }
 
   ngOnInit(): void {
+    this.loading = true;
     this.getSeccionData();
-   this.getTemaData();
+    this.getTemaData();
+    this.loading = false;
+
   }
 
-  getSeccionData(){
+  getSeccionData() {
     this.seccionService.getSeccion().then(secciones => this.secciones = secciones);
   }
 
-  getTemaData(){
+  getTemaData() {
     this.temaService.getTema().then(temas => this.temas = temas);
   }
 
   cambioVisibilidad(e) {
-    var visibilidad = e.checked ? 'activa':'inactiva';
-    this.mensajeService.mensajeCorrecto('Se cambió la visibilidad a '+visibilidad+' de manera correcta');
-    //this.getSeccionData();
+    this.loading = true;
+    var isVisible = e.checked;
+    var visibilidad = isVisible ? 'activa' : 'inactiva';
+
+    this.seccionService.setVisibilidad(1, isVisible).subscribe(data => {
+      if (data) {
+        this.mensajeService.mensajeCorrecto('Se cambió la visibilidad a ' + visibilidad + ' de manera correcta');
+        this.loading = false;
+        this.getSeccionData();
+      }
+    }, (err) => {
+      this.mensajeService.mensajeIncorrecto('No se logró cambiar la visibilidad');
+      this.loading = false;
+      this.getSeccionData();
+    }
+    );
+
   }
 
-  cambioTema(e){
-    this.mensajeService.mensajeCorrecto('Se cambió el tema de manera correcta');
-    //this.getSeccionData();
+  cambioTema(e) {
+
+    this.loading = true;
+    this.seccionService.setTema(1, '').subscribe(data => {
+      if (data) {
+        this.mensajeService.mensajeCorrecto('Se cambió el tema de manera correcta');
+        this.loading = false;
+        this.getSeccionData();
+      }
+    }, (err) => {
+      this.mensajeService.mensajeIncorrecto('No se logró cambiar el tema');
+      this.loading = false;
+      this.getSeccionData();
+    });
+  }
+
+
+  cambiarOrden(e){
+    this.mensajeService.mensajeCorrecto('Se cambió el orden de manera correcta');
   }
 
 }

@@ -19,4 +19,9 @@ export class MensajeService {
   mensajeCorrecto(mensaje: string) {
     this.messageService.add({severity:'success', summary: 'Guardado satisfactorio', detail: mensaje}); 
   }
+
+
+  mensajeIncorrecto(mensaje: string) {
+    this.messageService.add({severity:'error', summary: 'Ups, guardado incorrecto', detail: mensaje}); 
+  }
 }
