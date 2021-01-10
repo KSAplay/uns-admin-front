@@ -11,16 +11,60 @@
     margin: 2% 0%;
 }
 
-.btnEditar{
-    font-weight: bold;
-    margin-right: 4%;
-}
-
-.btnEliminar{
-    font-weight: bold;
+.btnSpace{
+    margin: 0% 5%;
 }
 
 .imgNoticia{
     width: auto;
     height: 80px;
+}
+
+.formulario{
+    text-align: center;
+}
+
+.tituloModal{
+    margin: 10px 0px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.titularTA{
+    text-align: center;
+}
+
+.fecha{
+    text-align: center;
+}
+
+.img-fluid{
+    margin: 10% 12% 0% 12%;
+    width: 76%;
+    height: auto;
+    border-radius: 5%;
+}
+
+.img-fluid:hover{
+    cursor: pointer;
+}
+
+.botonesFooter{
+    text-align: center;
+}
+
+::ng-deep{
+    .p-dialog .p-dialog-header{
+        display: none;
+    }
+
+    .p-button.p-button-success {
+        background: #00C851;
+        border: 1px solid #00C851;
+    }
+
+    .p-button:hover.p-button-success:hover {
+        background: #007E33;
+        border: 1px solid #007E33;
+    }
 }

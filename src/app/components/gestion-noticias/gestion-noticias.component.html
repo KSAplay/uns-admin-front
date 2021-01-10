@@ -1,69 +1,114 @@
 
-<div class="card">
-    <div class="titulo">NOTICIAS</div>
-    <p-table #dt2 [value]="noticias" dataKey="id"
-        [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,15,20]" [loading]="false" styleClass="p-datatable-noticias"
-        [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        [globalFilterFields]="['title','fecha','visible']">
+<div class="p-grid">
+    <div class="p-col">
+        <div class="card">
+            <div class="titulo">NOTICIAS</div>
+            <p-table #dt [value]="noticias" dataKey="id"
+                [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,15,20]" [loading]="false" styleClass="p-datatable-noticias"
+                [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [globalFilterFields]="['title','fecha','visible']">
 
-        <ng-template pTemplate="caption">
-            <div class="p-d-flex">
-                <span class="p-input-icon-left p-ml-auto">
-                    <i class="pi pi-search"></i>
-                    <input pInputText type="text" (input)="dt2.filterGlobal($event.target.value, 'contains')" placeholder="Buscar noticia" />
-                </span>
-            </div>
-        </ng-template>
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex">
+                        <p-button (click)="mostrarModalAgregarNoticia()" label="Agregar Noticia" icon="pi pi-plus" styleClass="p-button-info"></p-button>
+                        <span class="p-input-icon-left p-ml-auto">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Buscar noticia" />
+                        </span>
+                    </div>
+                </ng-template>
 
-        <ng-template pTemplate="header">
-            <tr>
-                <th>Imagen</th>
-                <th>Titular</th>
-                <th>Fecha</th>
-                <th>Visibilidad</th>
-                <th>Acciones</th>
-            </tr>
-            <tr>
-                <th></th>
-                <th>
-                    <p-columnFilter type="text" field="Titular"></p-columnFilter>
-                </th>
-                <th>
-                    <p-columnFilter type="text" field="Fecha"></p-columnFilter>
-                </th>
-                <th>
-                    <p-columnFilter type="boolean" field="Visibilidad"></p-columnFilter>
-                </th>
-                <th></th>
-            </tr>
-        </ng-template>
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Imagen</th>
+                        <th>Titular</th>
+                        <th>Fecha</th>
+                        <th>Visibilidad</th>
+                        <th>Acciones</th>
+                    </tr>
+                </ng-template>
 
-        <ng-template pTemplate="body" let-noticia>
-            <tr>
-                <td>
-                    <img class="imgNoticia" src="{{ noticia.srcImage }}" alt="">
-                </td>
-                <td>
-                    <span class="text">{{ noticia.title }}</span>
-                </td>
-                <td>
-                    <span class="text">{{ noticia.fecha }}</span>
-                </td>
-                <td>
-                    <i class="pi" [ngClass]="{'true-icon pi-check-circle': noticia.visible, 'false-icon pi-times-circle': !noticia.visible}"></i>
-                </td>
-                <td>
-                    <button pButton pRipple type="button" label=" " class="btnEditar p-button-warning"><i class="pi pi-pencil"></i></button>
-                    <button pButton pRipple type="button" label=" " class="btnEliminar p-button-danger"><i class="pi pi-times"></i></button>
-                </td>
-            </tr>
-        </ng-template>
+                <ng-template pTemplate="body" let-noticia>
+                    <tr>
+                        <td>
+                            <img class="imgNoticia" src="{{ noticia.srcImage }}" alt="">
+                        </td>
+                        <td>
+                            <span class="text">{{ noticia.title }}</span>
+                        </td>
+                        <td>
+                            <span class="text">{{ noticia.fecha }}</span>
+                        </td>
+                            <td>
+                                <p-toggleButton styleClass="p-button-rounded" [(ngModel)]="noticia.visible" onIcon="fas fa-eye" offIcon="fas fa-eye-slash"></p-toggleButton>
+                            </td>
+                        <td>
+                            <p-button (click)="mostrarModalEditarNoticia()" icon="pi pi-pencil" label="" styleClass="p-button-warning" class="btnSpace"></p-button>
+                            <p-button (click)="eliminarNoticia()" icon="pi pi-times" label="" styleClass="btnEliminar p-button-danger"></p-button>
+                        </td>
+                    </tr>
+                </ng-template>
 
-        <ng-template pTemplate="emptymessage">
-            <tr>
-                <td colspan="5">Ninguna noticia encontrada.</td>
-            </tr>
-        </ng-template>
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="5">Ninguna noticia encontrada.</td>
+                    </tr>
+                </ng-template>
 
-    </p-table>
+            </p-table>
+        </div>
+    </div>
 </div>
+
+<p-dialog [(visible)]="displayModalEditarNoticia" [modal]="true" [style]="{width: '30vw'}" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false">
+    <form class="formulario">
+        <div class="form-group">
+            <input type="file" style="display: none;" (change)="onPhotoSelected($event)" #photoInput>
+            <img [src]="photoSelected || '../../../assets/resources/noticias/no-image.png'" class="img-fluid" alt="Ninguna imagen" (click)="photoInput.click()">
+        </div>
+        <div class="form-group">
+            <div class="tituloModal">Titular</div>
+            <textarea rows="3" cols="50" pInputTextarea autoResize="autoResize" class="titularTA" required></textarea>
+        </div>
+        <div class="form-group">
+            <div class="tituloModal">Fecha</div>
+            <input type="text" class="p-inputtext" class="fecha" pInputText requerid/>
+        </div>
+    </form>
+
+    <ng-template pTemplate="footer">
+        <div class="botonesFooter">
+            <p-button (click)="actualizarNoticia()" label="Actualizar" icon="pi pi-check" styleClass="p-button-success" class="btnSpace"></p-button>
+            <p-button (click)="displayModalEditarNoticia = false" label="Cancelar" icon="pi pi-times" styleClass="p-button-danger"></p-button>
+        </div>
+    </ng-template>
+
+</p-dialog>
+
+<p-dialog [(visible)]="displayModalAgregarNoticia" [modal]="true" [style]="{width: '30vw'}" [baseZIndex]="10000"
+    [draggable]="false" [resizable]="false">
+
+    <form class="formulario">
+        <div class="form-group">
+            <input type="file" style="display: none;" (change)="onPhotoSelected($event)" #photoInput>
+            <img [src]="photoSelected || '../../../assets/resources/noticias/no-image.png'" class="img-fluid" alt="Ninguna imagen" (click)="photoInput.click()">
+        </div>
+        <div class="form-group">
+            <div class="tituloModal">Titular</div>
+            <textarea rows="3" cols="50" pInputTextarea autoResize="autoResize" class="titularTA" required></textarea>
+        </div>
+        <div class="form-group">
+            <div class="tituloModal">Fecha</div>
+            <input type="text" class="p-inputtext" class="fecha" pInputText requerid/>
+        </div>
+    </form>
+
+    <ng-template pTemplate="footer">
+        <div class="botonesFooter">
+            <p-button (click)="agregarNoticia()" label="Agregar" icon="pi pi-check" styleClass="p-button-success" class="btnSpace"></p-button>
+            <p-button (click)="displayModalAgregarNoticia = false" label="Cancelar" icon="pi pi-times" styleClass="p-button-danger"></p-button>
+        </div>
+    </ng-template>
+
+</p-dialog>

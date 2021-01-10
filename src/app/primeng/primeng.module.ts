@@ -10,11 +10,14 @@ import {TieredMenuModule} from 'primeng/tieredmenu';
 import {SplitButtonModule} from 'primeng/splitbutton';
 import {TableModule} from 'primeng/table';
 import {ToggleButtonModule} from 'primeng/togglebutton';
-import { FormsModule } from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {MultiSelectModule} from 'primeng/multiselect';
 import {DropdownModule} from 'primeng/dropdown';
 import {SliderModule} from 'primeng/slider';
 import {ProgressBarModule} from 'primeng/progressbar';
+import {DialogModule} from 'primeng/dialog';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import {CalendarModule} from 'primeng/calendar';
 
 
 @NgModule({
@@ -34,7 +37,10 @@ import {ProgressBarModule} from 'primeng/progressbar';
     MultiSelectModule,
     DropdownModule,
     SliderModule,
-    ProgressBarModule
+    ProgressBarModule,
+    DialogModule,
+    InputTextareaModule,
+    CalendarModule
   ],
   exports:  [
     MegaMenuModule,
@@ -50,7 +56,10 @@ import {ProgressBarModule} from 'primeng/progressbar';
     MultiSelectModule,
     DropdownModule,
     SliderModule,
-    ProgressBarModule
+    ProgressBarModule,
+    DialogModule,
+    InputTextareaModule,
+    CalendarModule
   ]
 })
 export class PrimengModule { }
