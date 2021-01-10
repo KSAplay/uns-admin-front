@@ -15,6 +15,9 @@ import {DropdownModule} from 'primeng/dropdown';
 import {SliderModule} from 'primeng/slider';
 import {ProgressBarModule} from 'primeng/progressbar';
 import {ToastModule} from 'primeng/toast';
+import {DialogModule} from 'primeng/dialog';
+import {InputTextareaModule} from 'primeng/inputtextarea';
+import {CalendarModule} from 'primeng/calendar';
 
 
 @NgModule({
@@ -34,7 +37,10 @@ import {ToastModule} from 'primeng/toast';
     DropdownModule,
     SliderModule,
     ProgressBarModule,
-    ToastModule
+    ToastModule,
+    DialogModule,
+    InputTextareaModule,
+    CalendarModule
   ],
   exports:  [
     MegaMenuModule,
@@ -50,7 +56,10 @@ import {ToastModule} from 'primeng/toast';
     DropdownModule,
     SliderModule,
     ProgressBarModule,
-    ToastModule
+    ToastModule,
+    DialogModule,
+    InputTextareaModule,
+    CalendarModule
   ]
 })
 export class PrimengModule { }
