@@ -125,8 +125,8 @@ export class GestionNoticiasComponent implements OnInit {
     this.displayModalAgregarNoticia = true;
   }
 
-  cambiarValor(){
-    this.noticias[0].visible = false;
+  confirmar(){
+    //this.mensajeService.confirmarEliminar();
   }
 
 }

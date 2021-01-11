@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { MessageService } from 'primeng/api';
-import {ConfirmationService} from 'primeng/api';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MensajeService {
 
-  constructor(private confirmationService: ConfirmationService, private messageService: MessageService) { }
+  constructor(private messageService: MessageService) { }
 
   guardadoCorrecto() {
     this.messageService.add({severity:'success', summary: 'Guardado satisfactorio', detail: 'El contenido se guardó correctamente en la base de datos'}); 
@@ -27,6 +26,7 @@ export class MensajeService {
   }
 
   // Para confirmar acciones
+  /*
   confirmarEliminar() {
       this.confirmationService.confirm({
           message: '¿Estás seguro que quieres eliminar esta noticia?',
@@ -36,8 +36,9 @@ export class MensajeService {
               this.messageService.add({severity:'info', summary:'Confirmado', detail:'Noticia eliminada'});
           },
           reject: () => {
-              //this.messageService.add({severity:'info', summary:'Rechazado', detail:'No has eliminado la noticia'});
+              this.messageService.add({severity:'info', summary:'Rechazado', detail:'No has eliminado la noticia'});
           }
       });
   }
+  */
 }

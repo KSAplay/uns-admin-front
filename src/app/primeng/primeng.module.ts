@@ -18,7 +18,6 @@ import {ToastModule} from 'primeng/toast';
 import {DialogModule} from 'primeng/dialog';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {CalendarModule} from 'primeng/calendar';
-import {ConfirmDialogModule} from 'primeng/confirmdialog';
 
 
 @NgModule({
@@ -41,8 +40,7 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
     ToastModule,
     DialogModule,
     InputTextareaModule,
-    CalendarModule,
-    ConfirmDialogModule
+    CalendarModule
   ],
   exports:  [
     MegaMenuModule,
@@ -61,8 +59,7 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
     ToastModule,
     DialogModule,
     InputTextareaModule,
-    CalendarModule,
-    ConfirmDialogModule
+    CalendarModule
   ]
 })
 export class PrimengModule { }
