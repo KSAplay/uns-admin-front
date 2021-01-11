@@ -1,0 +1,58 @@
+{
+    "data": [
+        {
+            "data": {
+                "name": "Admision",
+                "visible": "true"
+            },
+            "children": [
+                {
+                    "data": {
+                        "name": "Proceso de admision",
+                        "visible": "true"
+                    }
+                },
+                {
+                    "data": {
+                        "name": "Cronograma",
+                        "visible": "true"
+                    }
+                }
+            ]
+        },
+        {
+            "data": {
+                "name": "Facultades",
+                "size": "3",
+                "type": "Folder"
+            },
+            "children": [
+                {
+                    "data": {
+                        "name": "Ingenieria",
+                        "type": "Picture"
+                    },
+                    "children": [
+                        {
+                            "data": {
+                                "name": "Ingenieria Sistemas"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "data": {
+                        "name": "Eduacion",
+                        "type": "Picture"
+                    }
+                },
+                {
+                    "data": {
+                        "name": "Ciencias",
+                        "type": "Picture"
+                    }
+                }
+            ]
+        }
+    ]
+}

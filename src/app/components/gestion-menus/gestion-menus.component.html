@@ -1,20 +1,37 @@
-
-<!--p-treeTable [value]="files1">
+<p-treeTable [value]="menuitems">
     <ng-template pTemplate="header">
         <tr>
-            <th>Name</th>
-            <th>Size</th>
-            <th>Type</th>
+            <th>Nombre</th>
+            <th>Visibilidad</th>
+            <th>Acciones</th>
         </tr>
     </ng-template>
+
     <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
         <tr [ttRow]="rowNode">
-            <td>
+            <td ttEditableColumn >
+
                 <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
-                {{rowData.name}}
+
+                <p-treeTableCellEditor>
+                    <ng-template pTemplate="input">
+                        <input pInputText type="text" [(ngModel)]="rowData.name">
+                    </ng-template>
+                    <ng-template pTemplate="output">{{rowData.name}}</ng-template>
+                </p-treeTableCellEditor>
+
             </td>
-            <td>{{rowData.size}}</td>
-            <td>{{rowData.type}}</td>
+            <td>
+                <p-toggleButton [(ngModel)]="rowData.visible" styleClass="p-button-rounded" onIcon="fas fa-eye"
+                    offIcon="fas fa-eye-slash"></p-toggleButton>
+            </td>
+
+            <td>
+                <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-warning p-mr-2"></button>
+
+                <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
+            </td>
         </tr>
     </ng-template>
-</p-treeTable-->
+
+</p-treeTable>
