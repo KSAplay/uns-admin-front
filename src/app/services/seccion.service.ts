@@ -8,10 +8,12 @@ import { HOST } from 'src/assets/shared/var.constant';
 })
 export class SeccionService {
 
+  // URL BACKEND
   url: string = `${HOST}/seccion`
 
   constructor(private http: HttpClient) { }
 
+  // Obtener Secciones
   getSeccion(): Promise<Seccion[]> {
     return this.http.get<any>('assets/data/seccion.json')
       .toPromise()
@@ -19,6 +21,7 @@ export class SeccionService {
       .then(data => { return data; });
   }
 
+  // Visibilidad de la Seccion
   setVisibilidad(identificador: number, vis: boolean) {
 
     const body = { id: identificador, visible: vis };
@@ -30,7 +33,7 @@ export class SeccionService {
     });
   }
 
-
+  // Establecer tema
   setTema(identificador: number, tema_cod: string){
     const body = { id: identificador, tema_code: tema_cod };
 

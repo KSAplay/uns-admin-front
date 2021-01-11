@@ -1,11 +1,11 @@
 <div class="p-grid">
-    <div class="p-col">
         <div class="card">
             <div class="titulo">NOTICIAS</div>
+
             <p-table #dt [value]="noticias" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
-                [rowsPerPageOptions]="[10,15,20]" [loading]="false" styleClass="p-datatable-noticias" [paginator]="true"
-                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-                [globalFilterFields]="['title','fecha','visible']">
+                [rowsPerPageOptions]="[10,15,20]" [loading]="loading" styleClass="p-datatable-noticias" [paginator]="true"
+                currentPageReportTemplate="Mostrando del {first} al {last} de {totalRecords} noticias"
+                [globalFilterFields]="['title','fecha','visible']" [rowHover]="true">
 
                 <ng-template pTemplate="caption">
                     <div class="p-d-flex">
@@ -21,34 +21,32 @@
 
                 <ng-template pTemplate="header">
                     <tr>
-                        <th>Imagen</th>
-                        <th>Titular</th>
-                        <th>Fecha</th>
-                        <th>Visibilidad</th>
-                        <th>Acciones</th>
+                        <th style="text-align: center; width: 20rem">Imagen</th>
+                        <th style="text-align: center; width: 25rem">Titular</th>
+                        <th style="text-align: center; width: auto">Fecha</th>
+                        <th style="text-align: center; width: 7rem">Visibilidad</th>
+                        <th style="text-align: center; width: auto">Acciones</th>
                     </tr>
                 </ng-template>
 
                 <ng-template pTemplate="body" let-noticia>
                     <tr>
-                        <td>
+                        <td style="text-align: center">
                             <img class="imgNoticia" src="{{ noticia.srcImage }}" alt="">
                         </td>
                         <td>
                             <span class="text">{{ noticia.title }}</span>
                         </td>
-                        <td>
+                        <td style="text-align: center">
                             <span class="text">{{ noticia.fecha }}</span>
                         </td>
-                        <td>
-                            <p-toggleButton styleClass="p-button-rounded" [(ngModel)]="noticia.visible"
+                        <td style="text-align: center;">
+                            <p-toggleButton (onChange)="cambioVisibilidad($event)" styleClass="p-button-rounded" [(ngModel)]="noticia.visible"
                                 onIcon="fas fa-eye" offIcon="fas fa-eye-slash"></p-toggleButton>
                         </td>
-                        <td>
-                            <p-button (click)="mostrarModalEditarNoticia()" icon="pi pi-pencil" label=""
-                                styleClass="p-button-warning" class="btnSpace"></p-button>
-                            <p-button (click)="eliminarNoticia()" icon="pi pi-times" label=""
-                                styleClass="btnEliminar p-button-danger"></p-button>
+                        <td style="text-align: center">
+                            <button (click)="editarNoticia(noticia)" pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-warning p-mr-2"></button>
+                            <button (click)="eliminarNoticia(noticia)" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
                         </td>
                     </tr>
                 </ng-template>
@@ -60,31 +58,31 @@
                 </ng-template>
 
             </p-table>
+
         </div>
-    </div>
 </div>
 
+<!-- MODAL DE EDITAR NOTICIA -->
 <p-dialog [(visible)]="displayModalEditarNoticia" [modal]="true" [style]="{width: '30vw'}" [baseZIndex]="10000"
     [draggable]="false" [resizable]="false">
     <form class="formulario">
         <div class="form-group">
             <input type="file" style="display: none;" (change)="onPhotoSelected($event)" #photoInput>
-            <img [src]="photoSelected || '../../../assets/resources/noticias/no-image.png'" class="img-fluid"
-                alt="Ninguna imagen" (click)="photoInput.click()">
+            <img src="../../../assets/resources/noticias/no-image.png" class="img-fluid" alt="Ninguna imagen" (click)="photoInput.click()">
         </div>
         <div class="form-group">
             <div class="tituloModal">Titular</div>
-            <textarea rows="3" cols="50" pInputTextarea autoResize="autoResize" class="titularTA" required></textarea>
+            <textarea rows="3" cols="50" pInputTextarea autoResize="autoResize" class="titularTA" [(ngModel)]="noticia.title" required autofocus></textarea>
         </div>
         <div class="form-group">
             <div class="tituloModal">Fecha</div>
-            <input type="text" class="p-inputtext" class="fecha" pInputText requerid />
+            <input type="text" class="p-inputtext" class="fecha" pInputText [(ngModel)]="noticia.fecha" requerid />
         </div>
     </form>
 
     <ng-template pTemplate="footer">
         <div class="botonesFooter">
-            <p-button (click)="actualizarNoticia()" label="Actualizar" icon="pi pi-check" styleClass="p-button-success"
+            <p-button (click)="actualizarNoticia($event)" label="Actualizar" icon="pi pi-check" styleClass="p-button-success"
                 class="btnSpace"></p-button>
             <p-button (click)="displayModalEditarNoticia = false" label="Cancelar" icon="pi pi-times"
                 styleClass="p-button-danger"></p-button>
@@ -93,6 +91,8 @@
 
 </p-dialog>
 
+
+<!-- MODAL DE AGREGAR NOTICIA -->
 <p-dialog [(visible)]="displayModalAgregarNoticia" [modal]="true" [style]="{width: '30vw'}" [baseZIndex]="10000"
     [draggable]="false" [resizable]="false">
 
@@ -104,7 +104,7 @@
         </div>
         <div class="form-group">
             <div class="tituloModal">Titular</div>
-            <textarea rows="3" cols="50" pInputTextarea autoResize="autoResize" class="titularTA" required></textarea>
+            <textarea rows="3" cols="50" pInputTextarea autoResize="autoResize" class="titularTA" required autofocus></textarea>
         </div>
         <div class="form-group">
             <div class="tituloModal">Fecha</div>
@@ -114,7 +114,7 @@
 
     <ng-template pTemplate="footer">
         <div class="botonesFooter">
-            <p-button (click)="agregarNoticia()" label="Agregar" icon="pi pi-check" styleClass="p-button-success"
+            <p-button (click)="agregarNoticia(noticia)" label="Agregar" icon="pi pi-check" styleClass="p-button-success"
                 class="btnSpace"></p-button>
             <p-button (click)="displayModalAgregarNoticia = false" label="Cancelar" icon="pi pi-times"
                 styleClass="p-button-danger"></p-button>
@@ -122,3 +122,4 @@
     </ng-template>
 
 </p-dialog>
+
