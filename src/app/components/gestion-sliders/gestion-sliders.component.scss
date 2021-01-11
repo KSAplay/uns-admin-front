@@ -1,0 +1,16 @@
+
+@import '../../../assets/shared/colores.scss';
+
+.titulo{
+    width: 100%;
+    height: auto;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    color: $titulo;
+    margin: 2% 0%;
+}
+
+.card{
+    width: 100%;
+}
