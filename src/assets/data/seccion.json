@@ -27,6 +27,18 @@
                     "descripcion": "Rojo"
                 }
             
+        },
+        {
+            "posicion" : 3,
+            "nombre": "Vinculos",
+            "frontend_id": "string",
+            "visible": true,
+            "tema":
+                {
+                    "tema_code": "clr_blanco",
+                    "descripcion": "Blanco"
+                }
+            
         }
     ]
 }

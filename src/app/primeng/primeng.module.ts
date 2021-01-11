@@ -18,6 +18,7 @@ import {ToastModule} from 'primeng/toast';
 import {DialogModule} from 'primeng/dialog';
 import {InputTextareaModule} from 'primeng/inputtextarea';
 import {CalendarModule} from 'primeng/calendar';
+import {TreeTableModule} from 'primeng/treetable';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import {CalendarModule} from 'primeng/calendar';
     ToastModule,
     DialogModule,
     InputTextareaModule,
-    CalendarModule
+    CalendarModule,
+    TreeTableModule
   ],
   exports:  [
     MegaMenuModule,
@@ -59,7 +61,8 @@ import {CalendarModule} from 'primeng/calendar';
     ToastModule,
     DialogModule,
     InputTextareaModule,
-    CalendarModule
+    CalendarModule,
+    TreeTableModule
   ]
 })
 export class PrimengModule { }

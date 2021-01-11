@@ -2,10 +2,11 @@
     <div class="p-col">
         <div class="card">
             <div class="titulo">SECCIONES</div>
-            <p-table [value]="secciones" [loading]="loading" (sortFunction)="cambiarOrden($event)" >
+            <p-table [value]="secciones" [loading]="loading" (onRowReorder)="cambiarOrden($event)" [customSort]="true">
                 <ng-template pTemplate="header">
                     <tr>
                         <th style="width:3rem"></th>
+                        <th>Posicion</th>
                         <th>Nombre</th>
                         <th>Tema</th>
                         <th>Visibilidad</th>
@@ -17,6 +18,7 @@
                         <td>
                             <span class="pi pi-bars" pReorderableRowHandle></span>
                         </td>
+                        <td>{{seccion.posicion}}</td>
                         <td>{{seccion.nombre}}</td>
                         <td>
                         <p-dropdown (onChange)="cambioTema($event)" [options]="temas" [(ngModel)]="seccion.tema.tema_code" optionLabel="descripcion"
