@@ -15,8 +15,9 @@ interface HtmlInputEvent extends Event {
 })
 export class GestionNoticiasComponent implements OnInit {
   
-  displayModalEditarNoticia: boolean;
+  noImage: string = '../../../assets/resources/noticias/no-image.png';
   displayModalAgregarNoticia: boolean;
+  displayModalEditarNoticia: boolean;
   noticias: Noticia[];
   noticia: Noticia = new Noticia;
   fecha: string;
@@ -39,22 +40,37 @@ export class GestionNoticiasComponent implements OnInit {
     this.noticiasService.getNoticias().then(noticias => this.noticias = noticias);
   }
 
-  // Para cambiar la imagen seleccionada
-  onPhotoSelected(event): void{
-    if (event.target.files && event.target.files[0]){
-      this.file = event.target.files[0];
-      // Image Preview
-      const reader = new FileReader();
-      reader.onload = e => this.photoSelected = reader.result;
-      reader.readAsDataURL(this.file);
+  crearNoticia(noticia: Noticia){
+    this.displayModalAgregarNoticia = false
+    this.loading = true;
+    this.noticia = {...noticia};
+
+    this.noticiasService.crearNoticia(this.noticia).subscribe(data => {
+      if (data) {
+        this.mensajeService.mensajeCorrecto('Se guardó la noticia de manera correcta.');
+        this.loading = false;
+        this.getNoticias();
+      }
+    }, (err) => {
+      this.mensajeService.mensajeIncorrecto('No se logró guardar la noticia.');
+      this.loading = false;
+      this.getNoticias();
     }
+    );
+    this.file = null;
+    this.photoSelected = null;
+  }
+
+  eliminarNoticia(){
+    //this.mensajeService.confirmarEliminar();
   }
 
   actualizarNoticia(noticia: Noticia){
     this.displayModalEditarNoticia = false
     this.loading = true;
+    this.noticia = {...noticia};
 
-    this.noticiasService.actualizarNoticia(1, noticia).subscribe(data => {
+    this.noticiasService.actualizarNoticia(1, this.noticia).subscribe(data => {
       if (data) {
         this.mensajeService.mensajeCorrecto('Se actualizó la noticia de manera correcta.');
         this.loading = false;
@@ -66,36 +82,17 @@ export class GestionNoticiasComponent implements OnInit {
       this.getNoticias();
     }
     );
+
+    this.file = null;
+    this.photoSelected = null;
   }
 
+  // Funcion para abrir modal y cargar la data
   editarNoticia(noticia: Noticia) {
-    this.noticia = {...noticia}
+    this.noticia = {...noticia};
     this.displayModalEditarNoticia = true;
   }
 
-  agregarNoticia(noticia: Noticia){
-    this.displayModalAgregarNoticia = false
-    this.loading = true;
-
-    this.noticia = {...noticia};
-
-    this.noticiasService.actualizarNoticia(1, noticia).subscribe(data => {
-      if (data) {
-        this.mensajeService.mensajeCorrecto('Se actualizó la noticia de manera correcta.');
-        this.loading = false;
-        this.getNoticias();
-      }
-    }, (err) => {
-      this.mensajeService.mensajeIncorrecto('No se logró actualizar la noticia.');
-      this.loading = false;
-      this.getNoticias();
-    }
-    );
-  }
-
-  eliminarNoticia(){
-
-  }
 
   cambioVisibilidad(e) {
     this.loading = true;
@@ -116,17 +113,15 @@ export class GestionNoticiasComponent implements OnInit {
     );
   }
 
-  mostrarModalEditarNoticia() {
-    this.displayModalEditarNoticia = true;
-  }
-
-  mostrarModalAgregarNoticia() {
-    this.noticia = new Noticia;
-    this.displayModalAgregarNoticia = true;
-  }
-
-  confirmar(){
-    //this.mensajeService.confirmarEliminar();
+  // Para cambiar la imagen seleccionada
+  onPhotoSelected(event): void{
+    if (event.target.files && event.target.files[0]){
+      this.file = event.target.files[0];
+      // Image Preview
+      const reader = new FileReader();
+      reader.onload = e => this.photoSelected = reader.result;
+      reader.readAsDataURL(this.file);
+    }
   }
 
 }

@@ -42,8 +42,8 @@ export class NoticiasService {
     });
   }
 
-  agregarNoticia(noticia: Noticia){
-    return this.http.post(`${this.url}/agregarNoticia`, noticia, {
+  crearNoticia(noticia: Noticia){
+    return this.http.post(`${this.url}/crearNoticia`, noticia, {
       headers: {
         'content-type': "application/json"
       }
