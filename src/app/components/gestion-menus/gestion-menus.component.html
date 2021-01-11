@@ -2,7 +2,7 @@
 <div class="p-grid">
     <div class="card">
         <div class="titulo">MENUS</div>
-        <p-treeTable [value]="menuitems">
+        <p-treeTable [value]="menuitems" [loading]="loading" >
             <ng-template pTemplate="header">
                 <tr>
                     <th style="text-align: center;">Nombre</th>
@@ -11,27 +11,27 @@
                 </tr>
             </ng-template>
 
-            <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+            <ng-template pTemplate="body" let-rowNode let-menuitem="rowData">
                 <tr [ttRow]="rowNode">
-                    <td ttEditableColumn  style="text-align: center;" >
+                    <td ttEditableColumn  >
 
                         <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
 
                         <p-treeTableCellEditor>
                             <ng-template pTemplate="input">
-                                <input pInputText type="text" [(ngModel)]="rowData.name">
+                                <input (change)="cambioTexto()" pInputText type="text" [(ngModel)]="menuitem.name">
                             </ng-template>
-                            <ng-template pTemplate="output">{{rowData.name}}</ng-template>
+                            <ng-template pTemplate="output">{{menuitem.name}}</ng-template>
                         </p-treeTableCellEditor>
 
                     </td>
                     <td  style="text-align: center;">
-                        <p-toggleButton [(ngModel)]="rowData.visible" styleClass="p-button-rounded" onIcon="fas fa-eye"
+                        <p-toggleButton (onChange)="cambiovisibilidad($event)" [(ngModel)]="menuitem.visible" styleClass="p-button-rounded" onIcon="fas fa-eye"
                             offIcon="fas fa-eye-slash"></p-toggleButton>
                     </td>
 
                     <td style="text-align: center;">
-                        <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
+                        <button (click)="eliminarMenu(1)" pButton icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
                     </td>
                 </tr>
             </ng-template>
@@ -39,3 +39,23 @@
         </p-treeTable>
     </div>
 </div>
+
+<p-toast position="center" key="toast-menu" [baseZIndex]="5000">
+    <ng-template let-message pTemplate="message">
+        <div class="p-flex p-flex-column" style="flex: 1">
+            <div class="p-text-center">
+                <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+                <h4>{{message.summary}}</h4>
+                <p>{{message.detail}}</p>
+            </div>
+            <div class="p-grid p-fluid">
+                <div class="p-col-6">
+                    <button type="button" pButton (click)="confirmarEliminarMenu()" label="Yes" class="p-button-success"></button>
+                </div>
+                <div class="p-col-6">
+                    <button type="button" pButton (click)="rechazarEliminarMenu()" label="No" class="p-button-secondary"></button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-toast>
