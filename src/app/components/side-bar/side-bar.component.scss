@@ -1,3 +1,8 @@
-::ng-deep .p-megamenu.p-megamenu-vertical {
-    width: auto;
+
+@import '../../../assets/shared/colores.scss';
+
+::ng-deep {
+    .p-megamenu.p-megamenu-vertical{
+        width: auto;
+    }
 }
