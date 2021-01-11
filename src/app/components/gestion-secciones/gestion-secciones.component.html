@@ -1,8 +1,8 @@
 <div class="p-grid">
-    <div class="p-col">
         <div class="card">
             <div class="titulo">SECCIONES</div>
             <p-table [value]="secciones" [loading]="loading" (sortFunction)="cambiarOrden($event)" >
+                
                 <ng-template pTemplate="header">
                     <tr>
                         <th style="width:3rem"></th>
@@ -45,6 +45,4 @@
             </p-table>
     
         </div>
-
-    </div>
 </div>
