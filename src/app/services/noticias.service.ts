@@ -35,7 +35,7 @@ export class NoticiasService {
   actualizarNoticia(identificador: number, noticia: Noticia){
     const body = { id: identificador, noticia: noticia };
 
-    return this.http.post(`${this.url}/actualizarNoticia`, body, {
+    return this.http.patch(`${this.url}/actualizarNoticia`, body, {
       headers: {
         'content-type': "application/json"
       }
@@ -48,6 +48,10 @@ export class NoticiasService {
         'content-type': "application/json"
       }
     });
+  }
+
+  eliminarNoticia(noticia: Noticia){
+    return this.http.delete(`${this.url}/${noticia}/eliminarNoticia`);
   }
 
 

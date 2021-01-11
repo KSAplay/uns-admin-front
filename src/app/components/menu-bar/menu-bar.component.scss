@@ -1,0 +1,30 @@
+
+@import '../../../assets/shared/colores.scss';
+
+.logo-uns{
+    margin: 0px 0px 0px 10px;
+}
+
+.logo-uns:hover{
+    cursor: pointer;
+}
+
+.fotoAdmin{
+    float: left;
+    border-radius: 100%;
+    width: auto;
+    height: 40px;
+    margin-right: 20px;
+}
+
+.admin{
+    float: left;
+    width: auto;
+    padding-top: 6px;
+    padding-right: 20px;
+}
+
+.btnAdmin{
+    float: right;
+    margin-right: 20px;
+}

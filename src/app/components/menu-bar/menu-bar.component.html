@@ -2,17 +2,12 @@
 <p-menubar [model]="items">
 
     <ng-template pTemplate="start">
-        <img src="https://primefaces.org/primeng/showcase/assets/showcase/images/primeng.svg" height="40" class="p-mr-2">
+        <img class="logo-uns" src="../../../assets/resources/menu-bar/uns.png" height="50" routerLink="inicio" >
     </ng-template>
 
     <ng-template pTemplate="end">
-        <div class="p-grid">
-            <div class="p-col">
-                <div class="p-text-light">Diego Baes</div>
-            </div>
-            <div class="p-col">
-                <button type="button" pButton icon="fas fa-caret-square-down"></button>
-            </div>
-        </div>
+        <img src="../../../assets/resources/menu-bar/usuariohombre.png" height="40" class="fotoAdmin">
+        <div class="admin">Kenny Saavedra Altuna</div>
+        <button (click)="cerrarSesion()" pButton pRipple icon="fas fa-sign-out-alt" class="btnAdmin p-button-sm p-button-rounded p-button-danger"></button>
     </ng-template>
 </p-menubar>

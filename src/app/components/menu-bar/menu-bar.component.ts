@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MenuItem} from 'primeng/api';
+import { MensajeService } from 'src/app/services/mensaje.service';
 
 @Component({
   selector: 'app-menu-bar',
@@ -11,7 +12,7 @@ export class MenuBarComponent implements OnInit {
    items: MenuItem[];
    opciones: MenuItem[];
 
-  constructor() { }
+  constructor(private mensajeService: MensajeService) { }
 
   ngOnInit(): void {
 
@@ -40,8 +41,11 @@ export class MenuBarComponent implements OnInit {
               {label: 'Refresh', icon: 'pi pi-fw pi-refresh'}
           ]
       }*/
-  ];
-
+    ];
   }
 
+  cerrarSesion(){
+      this.mensajeService.clear('s');
+      this.mensajeService.confirmarAccion('s','¿Estás seguro de que quieres salir?', 'warn');
+  }
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MensajeService } from '../../services/mensaje.service';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-principal',
@@ -7,13 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrincipalComponent implements OnInit {
 
-  constructor() { }
+  constructor(private mensajeService: MensajeService, private router: Router) { }
 
   ngOnInit(): void {
     
   }
 
+  RechazarSalir(){
+    this.mensajeService.clear('s');
+  }
  
+  ConfirmarSalir(){
+    this.mensajeService.clear('s');
+    this.router.navigate(['/login']);
+  }
 
 
 }

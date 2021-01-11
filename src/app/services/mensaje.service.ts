@@ -25,20 +25,12 @@ export class MensajeService {
     this.messageService.add({severity:'error', summary: '¡Ups!, guardado incorrecto', detail: mensaje}); 
   }
 
-  // Para confirmar acciones
-  /*
-  confirmarEliminar() {
-      this.confirmationService.confirm({
-          message: '¿Estás seguro que quieres eliminar esta noticia?',
-          header: 'Confirmación',
-          icon: 'pi pi-exclamation-triangle',
-          accept: () => {
-              this.messageService.add({severity:'info', summary:'Confirmado', detail:'Noticia eliminada'});
-          },
-          reject: () => {
-              this.messageService.add({severity:'info', summary:'Rechazado', detail:'No has eliminado la noticia'});
-          }
-      });
+  confirmarAccion(key: string, pregunta: string, type: string){
+      this.messageService.clear();
+      this.messageService.add({key: key, sticky: true, severity: type, summary: pregunta, detail:'Confirmar para proceder'});
   }
-  */
+
+  clear(key: string){
+    this.messageService.clear(key);
+  }
 }

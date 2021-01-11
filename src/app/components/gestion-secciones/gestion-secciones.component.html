@@ -1,51 +1,51 @@
 <div class="p-grid">
-        <div class="card">
-            <div class="titulo">SECCIONES</div>
-            <p-table [value]="secciones" [loading]="loading" (onRowReorder)="cambiarOrden($event)" [customSort]="true" [rowHover]="true">
-                <ng-template pTemplate="header">
-                    <tr>
-                        <th style="width:10rem"></th>
-                        <th style="text-align: center; width:10rem">Posición</th>
-                        <th style="text-align: center; width:17rem">Nombre</th>
-                        <th style="text-align: center; width:auto">Tema</th>
-                        <th style="text-align: center; width:8rem">Visibilidad</th>
-                        <th style="text-align: center; width:10rem"></th>
-                    </tr>
-                </ng-template>
+    <div class="card">
+        <div class="titulo">SECCIONES</div>
+        <p-table [value]="secciones" [loading]="loading" (onRowReorder)="cambiarOrden($event)" [customSort]="true" [rowHover]="true">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="width:10rem"></th>
+                    <th style="text-align: center; width:10rem">Posición</th>
+                    <th style="text-align: center; width:17rem">Nombre</th>
+                    <th style="text-align: center; width:auto">Tema</th>
+                    <th style="text-align: center; width:8rem">Visibilidad</th>
+                    <th style="text-align: center; width:10rem"></th>
+                </tr>
+            </ng-template>
 
-                <ng-template pTemplate="body" let-seccion let-columns="columns" let-index="rowIndex">
-                    <tr  [pReorderableRow]="index">
-                        <td style="text-align: center; padding-left: 5%">
-                            <span class="pi pi-bars" pReorderableRowHandle></span>
-                        </td>
-                        <td style="text-align: center; font-weight: bold">{{seccion.posicion}}</td>
-                        <td style="text-align: center">{{seccion.nombre}}</td>
-                        <td style="text-align: center">
-                            <p-dropdown (onChange)="cambioTema($event)" [options]="temas" [(ngModel)]="seccion.tema.tema_code" optionLabel="descripcion"
-                                optionValue="tema_code">
-    
-                                <ng-template pTemplate="selectedItem" style="text-align: center;">
-                                  
-                                    <span class="previo {{seccion.tema.tema_code}}">A</span>
-                                    {{seccion.tema.descripcion}}
-                                </ng-template>
-    
-                                <ng-template let-tema pTemplate="item" style="text-align: center;">
-                                    <span class="previo {{tema.tema_code}}">A</span>
-                                    {{tema.descripcion}}
-                               </ng-template>
-                            </p-dropdown>
-    
-                        </td>
-                        <td style="text-align: center">
-                            <p-toggleButton (onChange)="cambioVisibilidad($event)" styleClass="p-button-rounded" [(ngModel)]="seccion.visible" onIcon="fas fa-eye"
-                                offIcon="fas fa-eye-slash"></p-toggleButton>
-                        </td>
-                        <td></td>
-                    </tr>
-                </ng-template>
-            
-            </p-table>
-    
-        </div>
+            <ng-template pTemplate="body" let-seccion let-columns="columns" let-index="rowIndex">
+                <tr  [pReorderableRow]="index">
+                    <td style="text-align: center; padding-left: 5%">
+                        <span class="pi pi-bars" pReorderableRowHandle></span>
+                    </td>
+                    <td style="text-align: center; font-weight: bold">{{seccion.posicion}}</td>
+                    <td style="text-align: center">{{seccion.nombre}}</td>
+                    <td style="text-align: center">
+                        <p-dropdown (onChange)="cambioTema($event)" [options]="temas" [(ngModel)]="seccion.tema.tema_code" optionLabel="descripcion"
+                            optionValue="tema_code">
+
+                            <ng-template pTemplate="selectedItem" style="text-align: center;">
+                                
+                                <span class="previo {{seccion.tema.tema_code}}">A</span>
+                                {{seccion.tema.descripcion}}
+                            </ng-template>
+
+                            <ng-template let-tema pTemplate="item" style="text-align: center;">
+                                <span class="previo {{tema.tema_code}}">A</span>
+                                {{tema.descripcion}}
+                            </ng-template>
+                        </p-dropdown>
+
+                    </td>
+                    <td style="text-align: center">
+                        <p-toggleButton (onChange)="cambioVisibilidad($event)" styleClass="p-button-rounded" [(ngModel)]="seccion.visible" onIcon="fas fa-eye"
+                            offIcon="fas fa-eye-slash"></p-toggleButton>
+                    </td>
+                    <td></td>
+                </tr>
+            </ng-template>
+        
+        </p-table>
+
+    </div>
 </div>

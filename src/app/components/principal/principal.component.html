@@ -1,15 +1,35 @@
-<div class="p-grid" >
+
+<div class="p-grid" style="margin: 0; padding: 0;">
     <div class="p-col-12 menubar">
         <app-menu-bar></app-menu-bar>
     </div>
 
     <div class=" p-col-auto sidebar" >
             <app-side-bar></app-side-bar>
-
     </div>
 
     <div class="p-col">
         <router-outlet></router-outlet>
     </div>
 
-   </div>
+</div>
+
+<p-toast position="center" key="s" (onClose)="RechazarSalir()" [baseZIndex]="5000">
+    <ng-template let-message pTemplate="message">
+        <div class="p-flex p-flex-column" style="flex: 1">
+            <div class="p-text-center">
+                <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+                <h4>{{message.summary}}</h4>
+                <p>{{message.detail}}</p>
+            </div>
+            <div class="p-grid p-fluid">
+                <div class="p-col-6">
+                    <button type="button" pButton (click)="ConfirmarSalir()" label="Si" class="p-button-success"></button>
+                </div>
+                <div class="p-col-6">
+                    <button type="button" pButton (click)="RechazarSalir()" label="No" class="p-button-secondary"></button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-toast>
