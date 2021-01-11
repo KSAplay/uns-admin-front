@@ -22,6 +22,19 @@ export class SideBarComponent implements OnInit {
                 ]
             },
             {
+                label: 'Menus', icon: 'fas fa-bars',
+                items: [
+                    {label: 'Ver todos', icon: 'pi pi-fw pi-list', routerLink: 'menus/listar'},
+                    {label: 'Agregar', icon:' pi pi-fw pi-plus', routerLink: 'menus/agregar'}
+                ]
+            },
+            {
+                label: 'Sliders', icon: 'far fa-images',
+                items: [
+                    {label: 'Ver todos', icon: 'pi pi-fw pi-list', routerLink: 'sliders/listar'}
+                ]
+            },
+            {
                 label: 'Noticias', icon: 'far fa-newspaper',
                 items: [
                     {label: 'Ver todos', icon: 'pi pi-fw pi-list', routerLink: 'noticias/listar'}
@@ -34,24 +47,11 @@ export class SideBarComponent implements OnInit {
                 ]
             },
             {
-                label: 'Sliders', icon: 'far fa-images',
-                items: [
-                    {label: 'Ver todos', icon: 'pi pi-fw pi-list', routerLink: 'sliders/listar'}
-                ]
-            },
-            {
                 label: 'Vinculos', icon: 'fas fa-external-link-alt',
                 items: [
                     {label: 'Ver todos', icon: 'pi pi-fw pi-list', routerLink: 'vinculos/listar'}
                 ]
-            },
-            {
-                label: 'Menus', icon: 'fas fa-bars',
-                items: [
-                    {label: 'Agregar', icon:' pi pi-fw pi-plus', routerLink: 'menus/agregar'},
-                    {label: 'Ver todos', icon: 'pi pi-fw pi-list', routerLink: 'menus/listar'}
-                ]
-            },
+            }
         ]
     }
 

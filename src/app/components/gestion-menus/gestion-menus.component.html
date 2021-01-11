@@ -5,15 +5,15 @@
         <p-treeTable [value]="menuitems">
             <ng-template pTemplate="header">
                 <tr>
-                    <th>Nombre</th>
-                    <th>Visibilidad</th>
-                    <th>Acciones</th>
+                    <th style="text-align: center;">Nombre</th>
+                    <th style="text-align: center;">Visibilidad</th>
+                    <th style="text-align: center;">Acciones</th>
                 </tr>
             </ng-template>
 
             <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
                 <tr [ttRow]="rowNode">
-                    <td ttEditableColumn >
+                    <td ttEditableColumn  style="text-align: center;" >
 
                         <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
 
@@ -25,14 +25,12 @@
                         </p-treeTableCellEditor>
 
                     </td>
-                    <td>
+                    <td  style="text-align: center;">
                         <p-toggleButton [(ngModel)]="rowData.visible" styleClass="p-button-rounded" onIcon="fas fa-eye"
                             offIcon="fas fa-eye-slash"></p-toggleButton>
                     </td>
 
-                    <td>
-                        <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-warning p-mr-2"></button>
-
+                    <td style="text-align: center;">
                         <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
                     </td>
                 </tr>
