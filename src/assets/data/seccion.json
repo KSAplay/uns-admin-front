@@ -35,8 +35,8 @@
             "visible": true,
             "tema":
                 {
-                    "tema_code": "clr_blanco",
-                    "descripcion": "Blanco"
+                    "tema_code": "clr_gris",
+                    "descripcion": "Gris"
                 }
             
         }

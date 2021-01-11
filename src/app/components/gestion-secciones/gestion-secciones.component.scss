@@ -1,15 +1,17 @@
+
 @import '../../../assets/shared/colores.scss';
 
 .previo{
+    float: left;
     padding-left: 7%;
     padding-right: 7%;
     font-weight: bold;
-    color: #E80035;
+    color: $rojoPrimario;
 
 }
 
 .clr_rojo{
-    background-color:#E80035;
+    background-color: $rojoPrimario;
     color: white;
 }
 
@@ -18,7 +20,7 @@
 }
 
 .clr_gris{
-    background-color:  #F5F5F5;
+    background-color:  $grisVinculos;
 }
 
 .titulo{

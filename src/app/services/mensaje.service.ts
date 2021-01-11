@@ -13,7 +13,7 @@ export class MensajeService {
   }
 
   guardadoIncorrecto() {
-    //this.messageService.add({severity:'success', summary: 'Guardado satisfactorio', detail: 'El contenido se guardó correctamente en la base de datos'});
+    //this.messageService.add({severity:'error', summary: 'Guardado Incorrecto', detail: 'El contenido no se guardó correctamente en la base de datos'});
   }
 
   mensajeCorrecto(mensaje: string) {
@@ -22,7 +22,7 @@ export class MensajeService {
 
 
   mensajeIncorrecto(mensaje: string) {
-    this.messageService.add({severity:'error', summary: 'Ups, guardado incorrecto', detail: mensaje}); 
+    this.messageService.add({severity:'error', summary: '¡Ups!, guardado incorrecto', detail: mensaje}); 
   }
 
   // Para confirmar acciones

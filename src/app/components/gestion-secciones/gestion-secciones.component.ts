@@ -71,13 +71,11 @@ export class GestionSeccionesComponent implements OnInit {
       this.loading = false;
       this.getSeccionData();
     });
-    console.log(e);
   }
 
 
   cambiarOrden(e){
     this.mensajeService.mensajeCorrecto('Se cambió el orden de manera correcta');
-    console.log(e);
   }
 
 }

@@ -1,37 +1,43 @@
-<p-treeTable [value]="menuitems">
-    <ng-template pTemplate="header">
-        <tr>
-            <th>Nombre</th>
-            <th>Visibilidad</th>
-            <th>Acciones</th>
-        </tr>
-    </ng-template>
 
-    <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
-        <tr [ttRow]="rowNode">
-            <td ttEditableColumn >
+<div class="p-grid">
+    <div class="card">
+        <div class="titulo">MENUS</div>
+        <p-treeTable [value]="menuitems">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Visibilidad</th>
+                    <th>Acciones</th>
+                </tr>
+            </ng-template>
 
-                <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
+            <ng-template pTemplate="body" let-rowNode let-rowData="rowData">
+                <tr [ttRow]="rowNode">
+                    <td ttEditableColumn >
 
-                <p-treeTableCellEditor>
-                    <ng-template pTemplate="input">
-                        <input pInputText type="text" [(ngModel)]="rowData.name">
-                    </ng-template>
-                    <ng-template pTemplate="output">{{rowData.name}}</ng-template>
-                </p-treeTableCellEditor>
+                        <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
 
-            </td>
-            <td>
-                <p-toggleButton [(ngModel)]="rowData.visible" styleClass="p-button-rounded" onIcon="fas fa-eye"
-                    offIcon="fas fa-eye-slash"></p-toggleButton>
-            </td>
+                        <p-treeTableCellEditor>
+                            <ng-template pTemplate="input">
+                                <input pInputText type="text" [(ngModel)]="rowData.name">
+                            </ng-template>
+                            <ng-template pTemplate="output">{{rowData.name}}</ng-template>
+                        </p-treeTableCellEditor>
 
-            <td>
-                <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-warning p-mr-2"></button>
+                    </td>
+                    <td>
+                        <p-toggleButton [(ngModel)]="rowData.visible" styleClass="p-button-rounded" onIcon="fas fa-eye"
+                            offIcon="fas fa-eye-slash"></p-toggleButton>
+                    </td>
 
-                <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
-            </td>
-        </tr>
-    </ng-template>
+                    <td>
+                        <button pButton icon="pi pi-pencil" class="p-button-rounded p-button-warning p-mr-2"></button>
 
-</p-treeTable>
+                        <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
+                    </td>
+                </tr>
+            </ng-template>
+
+        </p-treeTable>
+    </div>
+</div>
