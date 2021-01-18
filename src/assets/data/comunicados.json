@@ -3,67 +3,80 @@
         {
             "srcImage": "https://www.uns.edu.pe/recursos/eventos/415e79a5f2484cd800129c4d720bdb86.png",
             "alt": "TALLER DE INICIO SUBPROYECTOS PNIPA",
-            "fecha": "11 DIC"
+            "fecha": "11 DIC",
+            "visible": true
         },
         {
             "srcImage": "https://www.uns.edu.pe/recursos/eventos/502cea0d4fec99854f4b9cc37f3d9717.png",
             "alt": "COMUNICADO 21 COMITÉ ELECTORAL",
-            "fecha": "09 DIC"
+            "fecha": "09 DIC",
+            "visible": true
         },
         {
             "srcImage": "https://www.uns.edu.pe/recursos/eventos/94ad4c185a86898f8cd07f0152a7c410.png",
             "alt": "COMUNICADO 19 COMITÉ ELECTORAL UNS",
-            "fecha": "08 DIC"
+            "fecha": "08 DIC",
+            "visible": true
         },
         {
             "srcImage": "https://www.uns.edu.pe/recursos/eventos/804d46352de79f08baed4a438032b54e.png",
             "alt": "COMUNICADO 20 COMITÉ ELECTORAL UNS",
-            "fecha": "08 DIC"
+            "fecha": "08 DIC",
+            "visible": true
         },
         {
             "srcImage": "https://www.uns.edu.pe/recursos/eventos/2f66fa864123f3fcb62ab25cb2f13b4e.png",
             "alt": "TALLER INTERNACIONAL DE DIVULGACIÓN CIENTÍFICA",
-            "fecha": "07 DIC"
+            "fecha": "07 DIC",
+            "visible": true
         },
         {
             "srcImage": "https://www.uns.edu.pe/recursos/eventos/aa4cd8e3c4539030277a396a83955f77.png",
             "alt": "ENTRENAMIENTO VIRTUAL DEL TALLER DE JUDO",
-            "fecha": "03 DIC"
+            "fecha": "03 DIC",
+            "visible": true
         },
         {
             "srcImage": "https://www.uns.edu.pe/recursos/eventos/3fd3520e5cef4bd078a8609b48bf21bc.png",
             "alt": "PRUEBAS MOLECULARES PARA EL PERSONAL ADMINISTRATIVO Y DOCENTE DE LA UNS",
-            "fecha": "02 DIC"
+            "fecha": "02 DIC",
+            "visible": true
         },
         {
             "srcImage": "https://www.uns.edu.pe/recursos/eventos/4a1578343bacbbb441297597fe942894.png",
             "alt": "INVITACIÓN A INAUGURACIÓN DE COMPLEJO DEPORTIVO UNS",
-            "fecha": "02 DIC"
+            "fecha": "02 DIC",
+            "visible": true
         },
         {
             "srcImage": "https://www.uns.edu.pe/recursos/eventos/043a4ecd592f93e2c43a5a8e792efff4.png",
             "alt": "COMUNICADO 16 COMITÉ ELECTORAL",
-            "fecha": "26 NOV"
+            "fecha": "26 NOV",
+            "visible": true
         },
         {
             "srcImage": "https://www.uns.edu.pe/recursos/eventos/08eb9eb70b100f190a568a94d5b06c07.png",
             "alt": "ENCUESTA DE SATISFACCIÓN DE SERVICIOS BRINDADOS POR LA UNIDAD MÉDICA",
-            "fecha": "26 NOV"
+            "fecha": "26 NOV",
+            "visible": true
         },
         {
             "srcImage": "https://www.uns.edu.pe/recursos/eventos/5bf7cfa8c82d4f75290b2a5b9ec0ad2f.jpg",
             "alt": "RELACIÓN DEFINITIVA DE MIEMBROS DE MESA",
-            "fecha": "25 NOV"
+            "fecha": "25 NOV",
+            "visible": true
         },
         {
             "srcImage": "https://www.uns.edu.pe/recursos/eventos/38ea071abf5923f499ebd600ad12886f.png",
             "alt": "COMUNICADO 14",
-            "fecha": "24 NOV"
+            "fecha": "24 NOV",
+            "visible": true
         },
         {
             "srcImage": "https://www.uns.edu.pe/recursos/eventos/b86470463cb553fa656ecf3e04b4bb06.png",
             "alt": "COMUNICADO 13",
-            "fecha": "23 NOV"
+            "fecha": "23 NOV",
+            "visible": true
         }
     
     ]

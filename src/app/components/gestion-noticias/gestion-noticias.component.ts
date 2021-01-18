@@ -64,8 +64,8 @@ export class GestionNoticiasComponent implements OnInit {
   }
 
   eliminarNoticia(){
-    this.mensajeService.clear('c');
-    this.mensajeService.confirmarAccion('c','¿Estás seguro de que quieres eliminar la noticia?', 'info');
+    this.mensajeService.clear('n');
+    this.mensajeService.confirmarAccion('n','¿Estás seguro de que quieres eliminar la noticia?', 'info');
   }
 
   actualizarNoticia(noticia: Noticia){
@@ -128,7 +128,7 @@ export class GestionNoticiasComponent implements OnInit {
   }
 
   ConfirmarEliminarNoticia(){
-    this.mensajeService.clear('c');
+    this.mensajeService.clear('n');
     //this.noticias = this.noticias.filter(noticia => noticia.title !== this.noticia.title); // Cambiar para manejarlo con id
     //this.noticia = {srcImage: '', title: '', fecha: '', visible: false};
 
@@ -149,7 +149,7 @@ export class GestionNoticiasComponent implements OnInit {
   }
 
   RechazarEliminarNoticia(){
-    this.mensajeService.clear('c');
+    this.mensajeService.clear('n');
   }
 
 }

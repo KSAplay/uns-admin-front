@@ -2,6 +2,133 @@
 <div class="p-grid">
     <div class="card">
         <div class="titulo">COMUNICADOS</div>
+        <p-table #dt [value]="comunicados" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+                [rowsPerPageOptions]="[10,15,20]" [loading]="loading" styleClass="p-datatable-comunicados" [paginator]="true"
+                currentPageReportTemplate="Mostrando del {first} al {last} de {totalRecords} comunicados"
+                [globalFilterFields]="['fecha','visible']" [rowHover]="true">
 
+                <ng-template pTemplate="caption">
+                    <div class="p-d-flex">
+                        <p-button (click)="displayModalAgregarComunicado = true; comunicado = {}" label="Agregar Comunicado" icon="pi pi-plus"
+                            styleClass="p-button-rounded"></p-button>
+                        <span class="p-input-icon-left p-ml-auto">
+                            <i class="pi pi-search"></i>
+                            <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                                placeholder="Buscar comunicado" />
+                        </span>
+                    </div>
+                </ng-template>
+
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="text-align: center; width: 2rem"></th>
+                        <th style="text-align: center; width: 16rem">Imagen</th>
+                        <th style="text-align: center; width: 10rem">Fecha</th>
+                        <th style="text-align: center; width: 8rem">Visibilidad</th>
+                        <th style="text-align: center; width: 18rem">Acciones</th>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="body" let-comunicado>
+                    <tr>
+                        <td style="text-align: center"></td>
+                        <td style="text-align: center">
+                            <img class="imgComunicado p-shadow-4" src="{{ comunicado.srcImage }}" alt="">
+                        </td>
+                        <td style="text-align: center">
+                            <span class="text">{{ comunicado.fecha }}</span>
+                        </td>
+                        <td style="text-align: center;">
+                            <p-toggleButton (onChange)="cambioVisibilidad($event)" styleClass="p-button-rounded" [ngModel]="comunicado.visible" onIcon="fas fa-eye" offIcon="fas fa-eye-slash"></p-toggleButton>
+                        </td>
+                        <td style="text-align: center">
+                            <button (click)="editarComunicado(comunicado)" pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-warning p-mr-2"></button>
+                            <button (click)="eliminarComunicado(comunicado)" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
+                        </td>
+                    </tr>
+                </ng-template>
+
+                <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="5">Ningún comunicado encontrado.</td>
+                    </tr>
+                </ng-template>
+
+            </p-table>
     </div>
 </div>
+
+<!-- -------------------- MODAL AGREGAR -------------------- -->
+<p-dialog [(visible)]="displayModalAgregarComunicado" [modal]="true" [style]="{width: '25vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+    <ng-template pTemplate="content">
+        <div style="text-align: center;">
+            <!--img src="../../../assets/resources/noticias/no-image.png" class="img-fluid" alt="Ninguna imagen" (click)="photoInput.click()"-->
+        
+            <input type="file" style="display: none;" (change)="onPhotoSelected($event)" #photoInput>
+            <img [src]="photoSelected != null ? photoSelected : comunicado.srcImage != null ? comunicado.srcImage : noImage" alt="" class="img-fluid" (click)="photoInput.click()">
+            
+            <div class="p-field">
+                <div class="tituloModal">Fecha</div>
+                <input type="text" class="p-inputtext" class="fecha" pInputText [ngModel]="comunicado.fecha" requerid />
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div style="text-align: center;">
+            <p-button (click)="crearComunicado(comunicado)" label="Agregar" icon="pi pi-check" styleClass="p-button-success"
+                class="btnSpace"></p-button>
+            <p-button (click)="displayModalAgregarComunicado = false; comunicado = {}; this.file = null; this.photoSelected = null;"
+                label="Cancelar" icon="pi pi-times" styleClass="p-button-danger"></p-button>
+        </div>
+    </ng-template>
+
+</p-dialog>
+
+
+<!-- -------------------- MODAL DE EDITAR -------------------- -->
+<p-dialog [(visible)]="displayModalEditarComunicado" [modal]="true" [style]="{width: '25vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+    <ng-template pTemplate="content">
+        <div style="text-align: center;">
+            <!--img src="../../../assets/resources/noticias/no-image.png" class="img-fluid" alt="Ninguna imagen" (click)="photoInput.click()"-->
+        
+            <input type="file" style="display: none;" (change)="onPhotoSelected($event)" #photoInput>
+            <img [src]="photoSelected != null ? photoSelected : comunicado.srcImage != null ? comunicado.srcImage : noImage" alt="" class="img-fluid" (click)="photoInput.click()">
+
+            <div class="p-field">
+                <div class="tituloModal">Fecha</div>
+                <input type="text" class="p-inputtext" class="fecha" pInputText [ngModel]="comunicado.fecha" requerid />
+            </div>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div style="text-align: center;">
+            <p-button (click)="actualizarComunicado(comunicado)" label="Actualizar" icon="pi pi-check" styleClass="p-button-success"
+                class="btnSpace"></p-button>
+            <p-button (click)="displayModalEditarComunicado = false; comunicado = {}; this.file = null; this.photoSelected = null;" label="Cancelar" icon="pi pi-times"
+                styleClass="p-button-danger"></p-button>
+        </div>
+    </ng-template>
+
+</p-dialog>
+
+<p-toast position="center" key="c" (onClose)="RechazarEliminarComunicado()" [baseZIndex]="5000">
+    <ng-template let-message pTemplate="message">
+        <div class="p-flex p-flex-column" style="flex: 1">
+            <div class="p-text-center">
+                <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+                <h4>{{message.summary}}</h4>
+                <p>{{message.detail}}</p>
+            </div>
+            <div class="p-grid p-fluid">
+                <div class="p-col-6">
+                    <button type="button" pButton (click)="ConfirmarEliminarComunicado()" label="Yes" class="p-button-success"></button>
+                </div>
+                <div class="p-col-6">
+                    <button type="button" pButton (click)="RechazarEliminarComunicado()" label="No" class="p-button-secondary"></button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-toast>

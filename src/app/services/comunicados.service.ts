@@ -1,49 +1,47 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Noticia } from '../models/noticia';
+import { Comunicado } from '../models/Comunicado';
 import { HOST } from 'src/assets/shared/var.constant';
 
 @Injectable({
   providedIn: 'root'
 })
-export class NoticiasService {
+export class ComunicadosService {
 
   // URL BACKEND
-  url: string = `${HOST}/noticias`
+  url: string = `${HOST}/comunicados`
 
   constructor(private http: HttpClient) { }
 
   // ----------------------------------------------------------------------------------
-  //                                OBTENER NOTICIAS
+  //                               OBTENER COMUNICADOS
   // ----------------------------------------------------------------------------------
-  getNoticias(): Promise<Noticia[]> {
-    return this.http.get<any>('assets/data/noticias.json')
+  getComunicados(): Promise<Comunicado[]> {
+    return this.http.get<any>('assets/data/comunicados.json')
       .toPromise()
-      .then(res => <Noticia[]>res.data)
+      .then(res => <Comunicado[]>res.data)
       .then(data => { return data; });
   }
-
   // ----------------------------------------------------------------------------------
-  //                               VISIBILIDAD NOTICIA
+  //                              VISIBILIDAD COMUNICADO
   // ----------------------------------------------------------------------------------
   setVisibilidad(identificador: number, vis: boolean) {
 
     const body = { id: identificador, visible: vis };
 
-    return this.http.post(`${this.url}/cambiovisibilidadNoticia`, body, {
+    return this.http.post(`${this.url}/cambiovisibilidadComunicado`, body, {
       headers: {
         'content-type': "application/json"
       }
     });
   }
-  
   // ----------------------------------------------------------------------------------
-  //                                ACTUALIZAR NOTICIA
+  //                              ACTUALIZAR COMUNICADO
   // ----------------------------------------------------------------------------------
-  actualizarNoticia(identificador: number, noticia: Noticia){
-    const body = { id: identificador, noticia: noticia };
+  actualizarComunicado(identificador: number, comunicado: Comunicado){
+    const body = { id: identificador, comunicado: comunicado };
 
-    return this.http.patch(`${this.url}/actualizarNoticia`, body, {
+    return this.http.patch(`${this.url}/actualizarComunicado`, body, {
       headers: {
         'content-type': "application/json"
       }
@@ -53,8 +51,8 @@ export class NoticiasService {
   // ----------------------------------------------------------------------------------
   //                                 CREAR NOTICIA
   // ----------------------------------------------------------------------------------
-  crearNoticia(noticia: Noticia){
-    return this.http.post(`${this.url}/crearNoticia`, noticia, {
+  crearComunicado(comunicado: Comunicado){
+    return this.http.post(`${this.url}/crearComunicado`, comunicado, {
       headers: {
         'content-type': "application/json"
       }
@@ -64,9 +62,7 @@ export class NoticiasService {
   // ----------------------------------------------------------------------------------
   //                                ELIMINAR NOTICIA
   // ----------------------------------------------------------------------------------
-  eliminarNoticia(noticia: Noticia){
-    return this.http.delete(`${this.url}/${noticia}/eliminarNoticia`);
+  eliminarComunicado(comunicado: Comunicado){
+    return this.http.delete(`${this.url}/${comunicado}/eliminarComunicado`);
   }
-
-
 }
