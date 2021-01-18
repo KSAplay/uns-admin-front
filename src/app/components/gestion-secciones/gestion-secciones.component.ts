@@ -15,7 +15,6 @@ export class GestionSeccionesComponent implements OnInit {
   secciones: Seccion[];
   temas: Tema[];
   loading: boolean;
-  temaInicio = new Tema();
 
   constructor(private mensajeService: MensajeService, private seccionService: SeccionService, private temaService: TemaService) {
 
@@ -26,14 +25,6 @@ export class GestionSeccionesComponent implements OnInit {
     this.getSeccionData();
     this.getTemaData();
     this.loading = false;
-/*
-    this.temaInicio.descripcion= '';
-    this.temaInicio.color_fondo= '';
-    this.temaInicio.color_titulo= '';
-    this.temaInicio.color_flecha_carrousel= '';
-    this.temaInicio.color_boton_carrousel_relleno_activo= '';
-    this.temaInicio. color_boton_carrousel_borde_activo= '';
-    this.temaInicio.color_boton_carrousel_borde_inactivo= '';*/
   }
 
   getSeccionData() {
@@ -45,9 +36,7 @@ export class GestionSeccionesComponent implements OnInit {
   getTemaData() {
     this.temaService.getTema().then(
       temas => {
-        
         this.temas = temas
-        //temas.unshift(this.temaInicio);
       }
       );
   }
@@ -89,6 +78,8 @@ export class GestionSeccionesComponent implements OnInit {
 
 
   cambiarOrden(e){
+    var seccionesOrden:string[];
+    
     this.mensajeService.mensajeCorrecto('Se cambió el orden de manera correcta');
     console.log(this.secciones);
   }
