@@ -44,4 +44,15 @@ export class SeccionService {
     });
   }
 
+  // Cambiar posicion
+  setPosicion(id: number, pos: number){
+    const body = { id_seccion: id, posicion: pos };
+
+    return this.http.put(`${this.url}/posicion`, body, {
+      headers: {
+        'content-type': "application/json"
+      }
+    });
+  }
+
 }

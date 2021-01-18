@@ -78,13 +78,43 @@ export class GestionSeccionesComponent implements OnInit {
 
 
   cambiarOrden(e){
-    var seccionesOrden:string[];
-    
-    this.mensajeService.mensajeCorrecto('Se cambió el orden de manera correcta');
-    console.log(this.secciones);
+    this.loading = true;
+    this.secciones.forEach((value,index)=>{
+      this.seccionService.setPosicion(value.id_seccion,index).subscribe(data =>{
+        if(data){
+          this.mensajeService.mensajeCorrecto('Se cambió el orden de manera correcta');
+        }
+      }, (err)=>{
+          this.mensajeService.mensajeIncorrecto('No se logró cambiar el orden');
+      });
+    });
+
+   setTimeout(() => {
+    this.getSeccionData();
+    this.loading = false;
+   }, 500);
   }
 
 
 
 
 }
+
+
+
+
+/*
+
+
+
+this.secciones.forEach((value,index)=>{
+  this.seccionService.setPosicion(value.id_seccion,index).subscribe(data => {
+    if(data){
+      this.mensajeService.mensajeCorrecto('Se cambió el orden de manera correcta');
+    }
+  },(err)=>{
+    this.mensajeService.mensajeIncorrecto('No se logró cambiar el orden');
+  }
+  });
+
+}*/
