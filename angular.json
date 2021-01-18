@@ -69,7 +69,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "uns-admin-front:build"
+            "browserTarget": "uns-admin-front:build",
+            "port": 4401
           },
           "configurations": {
             "production": {
