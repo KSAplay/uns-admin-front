@@ -1,18 +1,22 @@
 {
     "data":[
         {
+            "id_tema": 1,
             "descripcion": "Blanco",
             "tema_code": "clr_blanco",
             "color_fondo": "#aaaa"
+            
 
         },
         {
+            "id_tema": 3,
             "descripcion": "Gris",
             "tema_code": "clr_gris",
             "color_fondo": "#aaaa"
 
         },
         {
+            "id_tema": 2,
             "descripcion": "Rojo",
             "tema_code": "clr_rojo",
             "color_fondo": "#aaaa"

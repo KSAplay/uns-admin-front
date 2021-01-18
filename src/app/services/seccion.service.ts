@@ -24,9 +24,9 @@ export class SeccionService {
   // Visibilidad de la Seccion
   setVisibilidad(identificador: number, vis: boolean) {
 
-    const body = { id: identificador, visible: vis };
+    const body = { id_seccion: identificador, visible: vis };
 
-    return this.http.post(`${this.url}/cambiovisibilidad`, body, {
+    return this.http.put(`${this.url}/visible`, body, {
       headers: {
         'content-type': "application/json"
       }
@@ -34,10 +34,10 @@ export class SeccionService {
   }
 
   // Establecer tema
-  setTema(identificador: number, tema_cod: string){
-    const body = { id: identificador, tema_code: tema_cod };
+  setTema(identificador: number, id_tem: number){
+    const body = { id_seccion: identificador, id_tema: id_tem };
 
-    return this.http.post(`${this.url}/cambiotema`, body, {
+    return this.http.put(`${this.url}/tema`, body, {
       headers: {
         'content-type': "application/json"
       }

@@ -15,7 +15,7 @@ export class GestionSeccionesComponent implements OnInit {
   secciones: Seccion[];
   temas: Tema[];
   loading: boolean;
-
+  temaInicio = new Tema();
 
   constructor(private mensajeService: MensajeService, private seccionService: SeccionService, private temaService: TemaService) {
 
@@ -26,23 +26,38 @@ export class GestionSeccionesComponent implements OnInit {
     this.getSeccionData();
     this.getTemaData();
     this.loading = false;
-    console.log(this.secciones);
+/*
+    this.temaInicio.descripcion= '';
+    this.temaInicio.color_fondo= '';
+    this.temaInicio.color_titulo= '';
+    this.temaInicio.color_flecha_carrousel= '';
+    this.temaInicio.color_boton_carrousel_relleno_activo= '';
+    this.temaInicio. color_boton_carrousel_borde_activo= '';
+    this.temaInicio.color_boton_carrousel_borde_inactivo= '';*/
   }
 
   getSeccionData() {
-    this.seccionService.getSeccion().then(secciones => this.secciones = secciones);
+    this.seccionService.getSeccion().then(    secciones => 
+      this.secciones = secciones
+      );
   }
 
   getTemaData() {
-    this.temaService.getTema().then(temas => this.temas = temas);
+    this.temaService.getTema().then(
+      temas => {
+        
+        this.temas = temas
+        //temas.unshift(this.temaInicio);
+      }
+      );
   }
 
-  cambioVisibilidad(e) {
+  cambioVisibilidad(e, id_seccion) {
     this.loading = true;
     var isVisible = e.checked;
     var visibilidad = isVisible ? 'activa' : 'inactiva';
 
-    this.seccionService.setVisibilidad(1, isVisible).subscribe(data => {
+    this.seccionService.setVisibilidad(id_seccion, isVisible).subscribe(data => {
       if (data) {
         this.mensajeService.mensajeCorrecto('Se cambió la visibilidad a ' + visibilidad + ' de manera correcta');
         this.loading = false;
@@ -57,10 +72,9 @@ export class GestionSeccionesComponent implements OnInit {
 
   }
 
-  cambioTema(e) {
-
+  cambioTema(event, id_seccion) {
     this.loading = true;
-    this.seccionService.setTema(1, '').subscribe(data => {
+    this.seccionService.setTema(id_seccion, event.value.id_tema).subscribe(data => {
       if (data) {
         this.mensajeService.mensajeCorrecto('Se cambió el tema de manera correcta');
         this.loading = false;

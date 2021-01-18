@@ -1,4 +1,4 @@
-export interface Tema {
+export class Tema {
     descripcion: string;
     color_fondo: string;
     color_titulo: string;

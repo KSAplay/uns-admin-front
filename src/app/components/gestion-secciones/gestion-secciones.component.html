@@ -21,24 +21,24 @@
                     <td style="text-align: center; font-weight: bold">{{seccion.posicion +1}}</td>
                     <td style="text-align: center">{{seccion.nombre}}</td>
                     <td style="text-align: center">
-                        <p-dropdown (onChange)="cambioTema($event)" [options]="temas" [(ngModel)]="seccion.tema.descripcion" optionLabel="descripcion"
-                            optionValue="descripcion">
+                        <p-dropdown (onChange)="cambioTema($event, seccion.id_seccion)"  [options]="temas"  optionLabel="descripcion" >
 
                             <ng-template pTemplate="selectedItem" style="text-align: center;">
                                 
                                 <span class="previo {{seccion.tema.descripcion}}">A</span>
                                 {{seccion.tema.descripcion}}
                             </ng-template>
-
+                           
                             <ng-template let-tema pTemplate="item" style="text-align: center;">
                                 <span class="previo {{tema.descripcion}}">A</span>
                                 {{tema.descripcion}}
                             </ng-template>
+
                         </p-dropdown>
 
                     </td>
                     <td style="text-align: center">
-                        <p-toggleButton (onChange)="cambioVisibilidad($event)" styleClass="p-button-rounded" [(ngModel)]="seccion.visible" onIcon="fas fa-eye"
+                        <p-toggleButton (onChange)="cambioVisibilidad($event,seccion.id_seccion)" styleClass="p-button-rounded" [(ngModel)]="seccion.visible" onIcon="fas fa-eye"
                             offIcon="fas fa-eye-slash"></p-toggleButton>
                     </td>
                     <td></td>
