@@ -26,7 +26,7 @@ export class GestionSeccionesComponent implements OnInit {
     this.getSeccionData();
     this.getTemaData();
     this.loading = false;
-
+    console.log(this.secciones);
   }
 
   getSeccionData() {
@@ -76,6 +76,10 @@ export class GestionSeccionesComponent implements OnInit {
 
   cambiarOrden(e){
     this.mensajeService.mensajeCorrecto('Se cambió el orden de manera correcta');
+    console.log(this.secciones);
   }
+
+
+
 
 }

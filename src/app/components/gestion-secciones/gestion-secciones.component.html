@@ -18,20 +18,20 @@
                     <td style="text-align: center; padding-left: 5%">
                         <span class="pi pi-bars" pReorderableRowHandle></span>
                     </td>
-                    <td style="text-align: center; font-weight: bold">{{seccion.posicion}}</td>
+                    <td style="text-align: center; font-weight: bold">{{seccion.posicion +1}}</td>
                     <td style="text-align: center">{{seccion.nombre}}</td>
                     <td style="text-align: center">
-                        <p-dropdown (onChange)="cambioTema($event)" [options]="temas" [(ngModel)]="seccion.tema.tema_code" optionLabel="descripcion"
-                            optionValue="tema_code">
+                        <p-dropdown (onChange)="cambioTema($event)" [options]="temas" [(ngModel)]="seccion.tema.descripcion" optionLabel="descripcion"
+                            optionValue="descripcion">
 
                             <ng-template pTemplate="selectedItem" style="text-align: center;">
                                 
-                                <span class="previo {{seccion.tema.tema_code}}">A</span>
+                                <span class="previo {{seccion.tema.descripcion}}">A</span>
                                 {{seccion.tema.descripcion}}
                             </ng-template>
 
                             <ng-template let-tema pTemplate="item" style="text-align: center;">
-                                <span class="previo {{tema.tema_code}}">A</span>
+                                <span class="previo {{tema.descripcion}}">A</span>
                                 {{tema.descripcion}}
                             </ng-template>
                         </p-dropdown>

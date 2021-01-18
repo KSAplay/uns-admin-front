@@ -9,13 +9,13 @@ import { HOST } from 'src/assets/shared/var.constant';
 export class SeccionService {
 
   // URL BACKEND
-  url: string = `${HOST}/seccion`
+  url: string = `${HOST}/secciones`
 
   constructor(private http: HttpClient) { }
 
   // Obtener Secciones
   getSeccion(): Promise<Seccion[]> {
-    return this.http.get<any>('assets/data/seccion.json')
+    return this.http.get<any>(`${this.url}`)
       .toPromise()
       .then(res => <Seccion[]>res.data)
       .then(data => { return data; });
