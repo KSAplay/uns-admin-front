@@ -32,16 +32,16 @@
                 <ng-template pTemplate="body" let-noticia>
                     <tr>
                         <td style="text-align: center">
-                            <img class="imgNoticia p-shadow-4" src="{{ noticia.srcImage }}" alt="">
+                            <img class="imgNoticia p-shadow-4" src="{{noticia.host_imagen}}/{{noticia.nombre_imagen}}" alt="">
                         </td>
                         <td>
-                            <span class="text">{{ noticia.title }}</span>
+                            <span class="text">{{ noticia.titular }}</span>
                         </td>
                         <td style="text-align: center">
-                            <span class="text">{{ noticia.fecha }}</span>
+                            <span class="text">{{ noticia.fecha_noticia }}</span>
                         </td>
                         <td style="text-align: center;">
-                            <p-toggleButton (onChange)="cambioVisibilidad($event)" styleClass="p-button-rounded" [ngModel]="noticia.visible" onIcon="fas fa-eye" offIcon="fas fa-eye-slash"></p-toggleButton>
+                            <p-toggleButton (onChange)="cambioVisibilidad($event, noticia.id_noticia)" styleClass="p-button-rounded" [ngModel]="noticia.visible" onIcon="fas fa-eye" offIcon="fas fa-eye-slash"></p-toggleButton>
                         </td>
                         <td style="text-align: center">
                             <button (click)="editarNoticia(noticia)" pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-warning p-mr-2"></button>
@@ -101,25 +101,27 @@
             <!--img src="../../../assets/resources/noticias/no-image.png" class="img-fluid" alt="Ninguna imagen" (click)="photoInput.click()"-->
         
             <input type="file" style="display: none;" (change)="onPhotoSelected($event)" #photoInput>
-            <img [src]="photoSelected != null ? photoSelected : noticia.srcImage != null ? noticia.srcImage : noImage" alt="" class="img-fluid" (click)="photoInput.click()">
+            <img [src]="photoSelected != null ? photoSelected : 
+                                                 noticia.host_imagen != null ? (noticia.host_imagen+'/'+noticia.nombre_imagen) : noImage" alt="" class="img-fluid" (click)="photoInput.click()">
             
 
             <div class="p-field">
                 <div class="tituloModal">Titular</div>
-                <textarea rows="3" cols="50" pInputTextarea autoResize="autoResize" class="titularTA" [ngModel]="noticia.title" required autofocus></textarea>
+                <textarea rows="3" cols="50" pInputTextarea autoResize="autoResize" class="titularTA" [(ngModel)]="noticia.titular" required autofocus></textarea>
             </div>
             <div class="p-field">
                 <div class="tituloModal">Fecha</div>
-                <input type="text" class="p-inputtext" class="fecha" pInputText [ngModel]="noticia.fecha" requerid />
+                <p-inputMask [styleClass]="fecha" mask="9999-99-99" [(ngModel)]="noticia.fecha_noticia" placeholder="99/99/9999" slotChar="yyyy-mm-dd" requerid></p-inputMask>
+                <!--input type="text" class="p-inputtext" class="fecha" pInputText [ngModel]="noticia.fecha_noticia" requerid /-->
             </div>
         </div>
     </ng-template>
 
     <ng-template pTemplate="footer">
         <div style="text-align: center;">
-            <p-button (click)="actualizarNoticia(noticia)" label="Actualizar" icon="pi pi-check" styleClass="p-button-success"
+            <p-button (click)="actualizarNoticia(noticia.id_noticia,noticia)" label="Actualizar" icon="pi pi-check" styleClass="p-button-success"
                 class="btnSpace"></p-button>
-            <p-button (click)="displayModalEditarNoticia = false; noticia = {}; this.file = null; this.photoSelected = null;" label="Cancelar" icon="pi pi-times"
+            <p-button (click)="cerrarModalEditarNoticia()" label="Cancelar" icon="pi pi-times"
                 styleClass="p-button-danger"></p-button>
         </div>
     </ng-template>

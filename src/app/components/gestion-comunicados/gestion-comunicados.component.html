@@ -33,13 +33,13 @@
                     <tr>
                         <td style="text-align: center"></td>
                         <td style="text-align: center">
-                            <img class="imgComunicado p-shadow-4" src="{{ comunicado.srcImage }}" alt="">
+                            <img class="imgComunicado p-shadow-4" src="{{comunicado.host_imagen}}/{{comunicado.nombre_imagen}}" alt="">
                         </td>
                         <td style="text-align: center">
-                            <span class="text">{{ comunicado.fecha }}</span>
+                            <span class="text">{{ comunicado.fecha_comunicado }}</span>
                         </td>
                         <td style="text-align: center;">
-                            <p-toggleButton (onChange)="cambioVisibilidad($event)" styleClass="p-button-rounded" [ngModel]="comunicado.visible" onIcon="fas fa-eye" offIcon="fas fa-eye-slash"></p-toggleButton>
+                            <p-toggleButton (onChange)="cambioVisibilidad($event, comunicado.id_comunicado)" styleClass="p-button-rounded" [ngModel]="comunicado.visible" onIcon="fas fa-eye" offIcon="fas fa-eye-slash"></p-toggleButton>
                         </td>
                         <td style="text-align: center">
                             <button (click)="editarComunicado(comunicado)" pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-warning p-mr-2"></button>

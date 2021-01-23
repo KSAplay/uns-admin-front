@@ -1,6 +1,7 @@
 export class Comunicado{
-    srcImage: string;
-    alt: string;
-    fecha: string;
-    visible: boolean;
+    id_comunicado: number;
+    nombre_imagen: string;
+    host_imagen:string;
+    fecha_comunicado:string;
+    visible:boolean;
 }

@@ -24,6 +24,8 @@ export class GestionNoticiasComponent implements OnInit {
   fecha: string;
   loading : boolean;
 
+  
+  imagenCambiada: boolean;
   file: File;
   photoSelected: String | ArrayBuffer; 
 
@@ -36,10 +38,14 @@ export class GestionNoticiasComponent implements OnInit {
     this.noticia = new Noticia;
     this.getNoticias();
     this.loading = false;
+    this.imagenCambiada = false;
   }
 
   getNoticias() {
-    this.noticiasService.getNoticias().then(noticias => this.noticias = noticias);
+    this.noticiasService.getNoticias().then(noticias => {
+      this.noticias = noticias
+    });
+    
   }
 
   crearNoticia(noticia: Noticia){
@@ -68,12 +74,12 @@ export class GestionNoticiasComponent implements OnInit {
     this.mensajeService.confirmarAccion('n','¿Estás seguro de que quieres eliminar la noticia?', 'info');
   }
 
-  actualizarNoticia(noticia: Noticia){
+  actualizarNoticia(id_noticia,noticia: Noticia){
     this.displayModalEditarNoticia = false
     this.loading = true;
     this.noticia = {...noticia};
 
-    this.noticiasService.actualizarNoticia(1, this.noticia).subscribe(data => {
+    this.noticiasService.actualizarNoticia(id_noticia, this.noticia, this.file).subscribe(data => {
       if (data) {
         this.mensajeService.mensajeCorrecto('Se actualizó la noticia de manera correcta');
         this.loading = false;
@@ -85,24 +91,25 @@ export class GestionNoticiasComponent implements OnInit {
       this.getNoticias();
     }
     );
-
     this.file = null;
     this.photoSelected = null;
+    
   }
 
   // Funcion para abrir modal y cargar la data
   editarNoticia(noticia: Noticia) {
+    this.file = null;
+    this.photoSelected = null;
     this.noticia = {...noticia};
     this.displayModalEditarNoticia = true;
   }
 
 
-  cambioVisibilidad(e) {
+  cambioVisibilidad(e, id_noticia: number) {
     this.loading = true;
     var isVisible = e.checked;
     var visibilidad = isVisible ? 'activa' : 'inactiva';
-
-    this.noticiasService.setVisibilidad(1, isVisible).subscribe(data => {
+    this.noticiasService.setVisibilidad(id_noticia, isVisible).subscribe(data => {
       if (data) {
         this.mensajeService.mensajeCorrecto('Se cambió la visibilidad a ' + visibilidad + ' de manera correcta');
         this.loading = false;
@@ -114,12 +121,14 @@ export class GestionNoticiasComponent implements OnInit {
       this.getNoticias();
     }
     );
+    
   }
 
   // Para cambiar la imagen seleccionada
   onPhotoSelected(event): void{
     if (event.target.files && event.target.files[0]){
       this.file = event.target.files[0];
+      this.imagenCambiada = false;
       // Image Preview
       const reader = new FileReader();
       reader.onload = e => this.photoSelected = reader.result;
@@ -150,6 +159,14 @@ export class GestionNoticiasComponent implements OnInit {
 
   RechazarEliminarNoticia(){
     this.mensajeService.clear('n');
+  }
+
+
+  cerrarModalEditarNoticia(){
+    this.displayModalEditarNoticia = false; 
+    this.noticia = new Noticia(); 
+    this.file = null; 
+    this.photoSelected = null;
   }
 
 }

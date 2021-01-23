@@ -17,7 +17,7 @@ export class NoticiasService {
   //                                OBTENER NOTICIAS
   // ----------------------------------------------------------------------------------
   getNoticias(): Promise<Noticia[]> {
-    return this.http.get<any>('assets/data/noticias.json')
+    return this.http.get<any>(`${this.url}`)
       .toPromise()
       .then(res => <Noticia[]>res.data)
       .then(data => { return data; });
@@ -26,11 +26,11 @@ export class NoticiasService {
   // ----------------------------------------------------------------------------------
   //                               VISIBILIDAD NOTICIA
   // ----------------------------------------------------------------------------------
-  setVisibilidad(identificador: number, vis: boolean) {
+  setVisibilidad(id_noticia: number, vis: boolean) {
 
-    const body = { id: identificador, visible: vis };
+    const body = { visible: vis };
 
-    return this.http.post(`${this.url}/cambiovisibilidadNoticia`, body, {
+    return this.http.put(`${this.url}/${id_noticia}/visible`, body, {
       headers: {
         'content-type': "application/json"
       }
@@ -40,10 +40,9 @@ export class NoticiasService {
   // ----------------------------------------------------------------------------------
   //                                ACTUALIZAR NOTICIA
   // ----------------------------------------------------------------------------------
-  actualizarNoticia(identificador: number, noticia: Noticia){
-    const body = { id: identificador, noticia: noticia };
-
-    return this.http.patch(`${this.url}/actualizarNoticia`, body, {
+  actualizarNoticia(id_noticia: number, noticia: Noticia, img: File){
+    const body = { titular: noticia.titular , fecha_noticia: noticia.fecha_noticia, imagen: img};
+    return this.http.put(`${this.url}/${id_noticia}`, body, {
       headers: {
         'content-type': "application/json"
       }

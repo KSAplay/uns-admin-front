@@ -96,12 +96,12 @@ export class GestionComunicadosComponent implements OnInit {
     this.displayModalEditarComunicado = true;
   }
 
-  cambioVisibilidad(e) {
+  cambioVisibilidad(e,id_comunicado) {
     this.loading = true;
     var isVisible = e.checked;
     var visibilidad = isVisible ? 'activa' : 'inactiva';
 
-    this.comunicadosService.setVisibilidad(1, isVisible).subscribe(data => {
+    this.comunicadosService.setVisibilidad(id_comunicado, isVisible).subscribe(data => {
       if (data) {
         this.mensajeService.mensajeCorrecto('Se cambió la visibilidad a ' + visibilidad + ' de manera correcta');
         this.loading = false;

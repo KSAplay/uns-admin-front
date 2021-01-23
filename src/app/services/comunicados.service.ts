@@ -17,7 +17,7 @@ export class ComunicadosService {
   //                               OBTENER COMUNICADOS
   // ----------------------------------------------------------------------------------
   getComunicados(): Promise<Comunicado[]> {
-    return this.http.get<any>('assets/data/comunicados.json')
+    return this.http.get<any>(`${this.url}`)
       .toPromise()
       .then(res => <Comunicado[]>res.data)
       .then(data => { return data; });
@@ -25,11 +25,11 @@ export class ComunicadosService {
   // ----------------------------------------------------------------------------------
   //                              VISIBILIDAD COMUNICADO
   // ----------------------------------------------------------------------------------
-  setVisibilidad(identificador: number, vis: boolean) {
+  setVisibilidad(id_comunicado: number, vis: boolean) {
 
-    const body = { id: identificador, visible: vis };
+    const body = { visible: vis };
 
-    return this.http.post(`${this.url}/cambiovisibilidadComunicado`, body, {
+    return this.http.put(`${this.url}/${id_comunicado}/visible`, body, {
       headers: {
         'content-type': "application/json"
       }
