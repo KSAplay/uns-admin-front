@@ -24,6 +24,8 @@ export class GestionNoticiasComponent implements OnInit {
   fecha: string;
   loading : boolean;
 
+  id_noticia: number;
+
   
   imagenCambiada: boolean;
   file: File;
@@ -69,7 +71,8 @@ export class GestionNoticiasComponent implements OnInit {
     this.photoSelected = null;
   }
 
-  eliminarNoticia(){
+  eliminarNoticia(id_not: number){
+    this.id_noticia = id_not;
     this.mensajeService.clear('n');
     this.mensajeService.confirmarAccion('n','¿Estás seguro de que quieres eliminar la noticia?', 'info');
   }
@@ -143,7 +146,7 @@ export class GestionNoticiasComponent implements OnInit {
 
     this.loading = true;
 
-    this.noticiasService.eliminarNoticia(this.noticia).subscribe(data => {
+    this.noticiasService.eliminarNoticia(this.id_noticia).subscribe(data => {
       if (data) {
         this.mensajeService.mensajeCorrecto('Se eliminó la noticia de manera correcta');
         this.loading = false;
@@ -158,6 +161,7 @@ export class GestionNoticiasComponent implements OnInit {
   }
 
   RechazarEliminarNoticia(){
+    this.id_noticia=null;
     this.mensajeService.clear('n');
   }
 

@@ -41,12 +41,23 @@ export class NoticiasService {
   //                                ACTUALIZAR NOTICIA
   // ----------------------------------------------------------------------------------
   actualizarNoticia(id_noticia: number, noticia: Noticia, img: File){
-    const body = { titular: noticia.titular , fecha_noticia: noticia.fecha_noticia, imagen: img};
-    return this.http.put(`${this.url}/${id_noticia}`, body, {
+
+    var body = new FormData();
+    body.append('titular',noticia.titular);
+    body.append('fecha_noticia', noticia.fecha_noticia);
+    body.append('imagen', img);
+    console.log(body);
+    return this.http.put(`${this.url}/${id_noticia}`,body);
+    //const body = { titular: noticia.titular , fecha_noticia: noticia.fecha_noticia, imagen: img};
+    /*return this.http.post(`${this.url}/${id_noticia}`,body,{
       headers: {
-        'content-type': "application/json"
+        //'User-Agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/27.0.1453.110 Safari/537.36',
+        //'Content-Type' : 'application/x-www-form-urlencoded' 
+        'Content-Type' : 'multipart/form-data; boundary="boundary"' ,
+        //'Content-Length' : '44150'
+        //'content-type': "application/json"
       }
-    });
+    });*/
   }
 
   // ----------------------------------------------------------------------------------
@@ -63,8 +74,8 @@ export class NoticiasService {
   // ----------------------------------------------------------------------------------
   //                                ELIMINAR NOTICIA
   // ----------------------------------------------------------------------------------
-  eliminarNoticia(noticia: Noticia){
-    return this.http.delete(`${this.url}/${noticia}/eliminarNoticia`);
+  eliminarNoticia(id_noticia: number){
+    return this.http.delete(`${this.url}/${id_noticia}`);
   }
 
 

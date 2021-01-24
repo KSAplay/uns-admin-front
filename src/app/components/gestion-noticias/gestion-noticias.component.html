@@ -45,7 +45,7 @@
                         </td>
                         <td style="text-align: center">
                             <button (click)="editarNoticia(noticia)" pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-warning p-mr-2"></button>
-                            <button (click)="eliminarNoticia(noticia)" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
+                            <button (click)="eliminarNoticia(noticia.id_noticia)" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
                         </td>
                     </tr>
                 </ng-template>
@@ -128,7 +128,7 @@
 
 </p-dialog>
 
-<p-toast position="center" key="c" (onClose)="RechazarEliminarNoticia()" [baseZIndex]="5000">
+<p-toast position="center" key="n" (onClose)="RechazarEliminarNoticia()" [baseZIndex]="5000">
     <ng-template let-message pTemplate="message">
         <div class="p-flex p-flex-column" style="flex: 1">
             <div class="p-text-center">
