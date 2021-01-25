@@ -38,31 +38,29 @@ export class ComunicadosService {
   // ----------------------------------------------------------------------------------
   //                              ACTUALIZAR COMUNICADO
   // ----------------------------------------------------------------------------------
-  actualizarComunicado(identificador: number, comunicado: Comunicado){
-    const body = { id: identificador, comunicado: comunicado };
+  actualizarComunicado(id_comunicado: number, comunicado: Comunicado, img: File){
 
-    return this.http.patch(`${this.url}/actualizarComunicado`, body, {
-      headers: {
-        'content-type': "application/json"
-      }
-    });
+    var body = new FormData();
+    body.append('fecha_comunicado', comunicado.fecha_comunicado);
+    body.append('imagen', img);
+
+    return this.http.put(`${this.url}/${id_comunicado}`, body);
   }
 
   // ----------------------------------------------------------------------------------
   //                                 CREAR NOTICIA
   // ----------------------------------------------------------------------------------
-  crearComunicado(comunicado: Comunicado){
-    return this.http.post(`${this.url}/crearComunicado`, comunicado, {
-      headers: {
-        'content-type': "application/json"
-      }
-    });
+  crearComunicado(comunicado: Comunicado, img: File){
+    var body = new FormData();
+    body.append('fecha_comunicado', comunicado.fecha_comunicado);
+    body.append('imagen', img);
+    return this.http.post(`${this.url}`, body);
   }
 
   // ----------------------------------------------------------------------------------
   //                                ELIMINAR NOTICIA
   // ----------------------------------------------------------------------------------
-  eliminarComunicado(comunicado: Comunicado){
-    return this.http.delete(`${this.url}/${comunicado}/eliminarComunicado`);
+  eliminarComunicado(id_comunicado: number){
+    return this.http.delete(`${this.url}/${id_comunicado}`);
   }
 }

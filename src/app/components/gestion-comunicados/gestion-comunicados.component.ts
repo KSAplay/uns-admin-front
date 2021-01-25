@@ -24,6 +24,8 @@ export class GestionComunicadosComponent implements OnInit {
   fecha: string;
   loading : boolean;
 
+  id_comunicado: number;
+
   file: File;
   photoSelected: String | ArrayBuffer; 
 
@@ -47,7 +49,7 @@ export class GestionComunicadosComponent implements OnInit {
     this.loading = true;
     this.comunicado = {...comunicado};
 
-    this.comunicadosService.crearComunicado(this.comunicado).subscribe(data => {
+    this.comunicadosService.crearComunicado(this.comunicado, this.file).subscribe(data => {
       if (data) {
         this.mensajeService.mensajeCorrecto('Se guardó el comunicado de manera correcta');
         this.loading = false;
@@ -63,17 +65,18 @@ export class GestionComunicadosComponent implements OnInit {
     this.photoSelected = null;
   }
 
-  eliminarComunicado(){
+  eliminarComunicado(id_com: number){
+    this.id_comunicado = id_com;
     this.mensajeService.clear('c');
     this.mensajeService.confirmarAccion('c','¿Estás seguro de que quieres eliminar el comunicado?', 'info');
   }
 
-  actualizarComunicado(comunicado: Comunicado){
+  actualizarComunicado(id_comunicado: number,comunicado: Comunicado){
     this.displayModalEditarComunicado = false
     this.loading = true;
     this.comunicado = {...comunicado};
 
-    this.comunicadosService.actualizarComunicado(1, this.comunicado).subscribe(data => {
+    this.comunicadosService.actualizarComunicado(id_comunicado, this.comunicado,this.file).subscribe(data => {
       if (data) {
         this.mensajeService.mensajeCorrecto('Se actualizó el comunicado de manera correcta');
         this.loading = false;
@@ -92,6 +95,8 @@ export class GestionComunicadosComponent implements OnInit {
 
   // Funcion para abrir modal y cargar la data
   editarComunicado(comunicado: Comunicado) {
+    this.file = null;
+    this.photoSelected = null;
     this.comunicado = {...comunicado};
     this.displayModalEditarComunicado = true;
   }
@@ -133,7 +138,7 @@ export class GestionComunicadosComponent implements OnInit {
 
     this.loading = true;
 
-    this.comunicadosService.eliminarComunicado(this.comunicado).subscribe(data => {
+    this.comunicadosService.eliminarComunicado(this.id_comunicado).subscribe(data => {
       if (data) {
         this.mensajeService.mensajeCorrecto('Se eliminó el comunicado de manera correcta');
         this.loading = false;
@@ -150,4 +155,6 @@ export class GestionComunicadosComponent implements OnInit {
   RechazarEliminarComunicado(){
     this.mensajeService.clear('c');
   }
+
+
 }
