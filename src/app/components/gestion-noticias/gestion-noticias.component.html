@@ -9,7 +9,7 @@
 
                 <ng-template pTemplate="caption">
                     <div class="p-d-flex">
-                        <p-button (click)="displayModalAgregarNoticia = true; noticia = {}" label="Agregar Noticia" icon="pi pi-plus"
+                        <p-button (click)="abrirModalCrearNoticia()" label="Agregar Noticia" icon="pi pi-plus"
                             styleClass="p-button-rounded"></p-button>
                         <span class="p-input-icon-left p-ml-auto">
                             <i class="pi pi-search"></i>
@@ -68,16 +68,18 @@
             <!--img src="../../../assets/resources/noticias/no-image.png" class="img-fluid" alt="Ninguna imagen" (click)="photoInput.click()"-->
         
             <input type="file" style="display: none;" (change)="onPhotoSelected($event)" #photoInput>
-            <img [src]="photoSelected != null ? photoSelected : noticia.srcImage != null ? noticia.srcImage : noImage" alt="" class="img-fluid" (click)="photoInput.click()">
+            <img [src]="photoSelected != null ? photoSelected : 
+                                                 noticia.host_imagen != null ? (noticia.host_imagen+'/'+noticia.nombre_imagen) : noImage" alt="" class="img-fluid" (click)="photoInput.click()">
             
 
             <div class="p-field">
                 <div class="tituloModal">Titular</div>
-                <textarea rows="3" cols="50" pInputTextarea autoResize="autoResize" class="titularTA" [ngModel]="noticia.title" required autofocus></textarea>
+                <textarea rows="3" cols="50" pInputTextarea autoResize="autoResize" class="titularTA" [(ngModel)]="noticia.titular" required autofocus></textarea>
             </div>
             <div class="p-field">
                 <div class="tituloModal">Fecha</div>
-                <input type="text" class="p-inputtext" class="fecha" pInputText [ngModel]="noticia.fecha" requerid />
+                <p-inputMask [styleClass]="fecha" mask="9999-99-99" [(ngModel)]="noticia.fecha_noticia" placeholder="99/99/9999" slotChar="yyyy-mm-dd" requerid></p-inputMask>
+                <!--input type="text" class="p-inputtext" class="fecha" pInputText [ngModel]="noticia.fecha" requerid /-->
             </div>
         </div>
     </ng-template>

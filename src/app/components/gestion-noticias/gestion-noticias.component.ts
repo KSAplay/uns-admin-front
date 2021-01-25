@@ -55,7 +55,7 @@ export class GestionNoticiasComponent implements OnInit {
     this.loading = true;
     this.noticia = {...noticia};
 
-    this.noticiasService.crearNoticia(this.noticia).subscribe(data => {
+    this.noticiasService.crearNoticia(this.noticia, this.file).subscribe(data => {
       if (data) {
         this.mensajeService.mensajeCorrecto('Se guardó la noticia de manera correcta');
         this.loading = false;
@@ -105,6 +105,13 @@ export class GestionNoticiasComponent implements OnInit {
     this.photoSelected = null;
     this.noticia = {...noticia};
     this.displayModalEditarNoticia = true;
+  }
+
+  abrirModalCrearNoticia(){
+    this.displayModalAgregarNoticia = true; 
+    this.noticia =new Noticia;
+    this.file = null;
+    this.photoSelected = null;
   }
 
 

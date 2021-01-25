@@ -46,7 +46,6 @@ export class NoticiasService {
     body.append('titular',noticia.titular);
     body.append('fecha_noticia', noticia.fecha_noticia);
     body.append('imagen', img);
-    console.log(body);
     return this.http.put(`${this.url}/${id_noticia}`,body);
     //const body = { titular: noticia.titular , fecha_noticia: noticia.fecha_noticia, imagen: img};
     /*return this.http.post(`${this.url}/${id_noticia}`,body,{
@@ -63,12 +62,12 @@ export class NoticiasService {
   // ----------------------------------------------------------------------------------
   //                                 CREAR NOTICIA
   // ----------------------------------------------------------------------------------
-  crearNoticia(noticia: Noticia){
-    return this.http.post(`${this.url}/crearNoticia`, noticia, {
-      headers: {
-        'content-type': "application/json"
-      }
-    });
+  crearNoticia(noticia: Noticia, img: File){
+    var body = new FormData();
+    body.append('titular',noticia.titular);
+    body.append('fecha_noticia', noticia.fecha_noticia);
+    body.append('imagen', img);
+    return this.http.post(`${this.url}`, body);
   }
 
   // ----------------------------------------------------------------------------------
