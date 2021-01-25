@@ -21,7 +21,6 @@ export class GestionComunicadosComponent implements OnInit {
   displayModalEditarComunicado: boolean;
   comunicados: Comunicado[];
   comunicado: Comunicado;
-  fecha: string;
   loading : boolean;
 
   id_comunicado: number;

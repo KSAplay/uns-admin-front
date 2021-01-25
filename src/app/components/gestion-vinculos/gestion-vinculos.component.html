@@ -2,6 +2,116 @@
 <div class="p-grid">
     <div class="card">
         <div class="titulo">VÍNCULOS</div>
+        <p-table #dt [value]="vinculos" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+            [rowsPerPageOptions]="[10,15,20]" [loading]="loading" styleClass="p-datatable-vinculos" [paginator]="true"
+            currentPageReportTemplate="Mostrando del {first} al {last} de {totalRecords} vinculos"
+            [globalFilterFields]="['visible']" [rowHover]="true">
 
+            <ng-template pTemplate="caption">
+                <div class="p-d-flex">
+                    <p-button (click)="displayModalAgregarVinculo = true; vinculo = {}" label="Agregar Vínculo" icon="pi pi-plus"
+                        styleClass="p-button-rounded"></p-button>
+                </div>
+            </ng-template>
+
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="text-align: center; width: 2rem"></th>
+                    <th style="text-align: center; width: 16rem">Imagen</th>
+                    <th style="text-align: center; width: 8rem">Visibilidad</th>
+                    <th style="text-align: center; width: 18rem">Acciones</th>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="body" let-vinculo>
+                <tr>
+                    <td style="text-align: center"></td>
+                    <td style="text-align: center">
+                        <img class="imgVinculo p-shadow-4" src="{{vinculo.host_imagen}}/{{vinculo.nombre_imagen}}" alt="">
+                    </td>
+                    <td style="text-align: center;">
+                        <p-toggleButton (onChange)="cambioVisibilidad($event, vinculo.id_vinculo)" styleClass="p-button-rounded" [ngModel]="vinculo.visible" onIcon="fas fa-eye" offIcon="fas fa-eye-slash"></p-toggleButton>
+                    </td>
+                    <td style="text-align: center">
+                        <button (click)="editarVinculo(vinculo)" pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-warning p-mr-2"></button>
+                        <button (click)="eliminarVinculo(vinculo.id_vinculo)" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
+                    </td>
+                </tr>
+            </ng-template>
+
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="5">Ningún vínculo encontrado.</td>
+                </tr>
+            </ng-template>
+
+        </p-table>
     </div>
 </div>
+
+<!-- -------------------- MODAL AGREGAR -------------------- -->
+<p-dialog [(visible)]="displayModalAgregarVinculo" [modal]="true" [style]="{width: '25vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+    <ng-template pTemplate="content">
+        <div style="text-align: center;">
+
+            <input type="file" style="display: none;" (change)="onPhotoSelected($event)" #photoInput>
+            <img class="p-shadow-4" [src]="photoSelected != null ? photoSelected : 
+            vinculo.host_imagen != null ? (vinculo.host_imagen+'/'+vinculo.nombre_imagen) : noImage" alt="" class="img-fluid p-shadow-4" (click)="photoInput.click()">
+
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div style="text-align: center;">
+            <p-button (click)="crearVinculo(vinculo)" label="Agregar" icon="pi pi-check" styleClass="p-button-success"
+                class="btnSpace"></p-button>
+            <p-button (click)="displayModalAgregarVinculo = false; vinculo = {}; this.file = null; this.photoSelected = null;"
+                label="Cancelar" icon="pi pi-times" styleClass="p-button-danger"></p-button>
+        </div>
+    </ng-template>
+
+</p-dialog>
+
+
+<!-- -------------------- MODAL DE EDITAR -------------------- -->
+<p-dialog [(visible)]="displayModalEditarVinculo" [modal]="true" [style]="{width: '25vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+    <ng-template pTemplate="content">
+        <div style="text-align: center;">
+
+            <input type="file" style="display: none;" (change)="onPhotoSelected($event)" #photoInput>
+            <img [src]="photoSelected != null ? photoSelected : 
+            vinculo.host_imagen != null ? (vinculo.host_imagen+'/'+vinculo.nombre_imagen) : noImage" alt="" class="img-fluid p-shadow-4" (click)="photoInput.click()">
+
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div style="text-align: center;">
+            <p-button (click)="actualizarVinculo(vinculo.id_vinculo,vinculo)" label="Actualizar" icon="pi pi-check" styleClass="p-button-success"
+                class="btnSpace"></p-button>
+            <p-button (click)="displayModalEditarVinculo = false; vinculo = {}; this.file = null; this.photoSelected = null;" label="Cancelar" icon="pi pi-times"
+                styleClass="p-button-danger"></p-button>
+        </div>
+    </ng-template>
+
+</p-dialog>
+
+<p-toast position="center" key="c" (onClose)="RechazarEliminarVinculo()" [baseZIndex]="5000">
+    <ng-template let-message pTemplate="message">
+        <div class="p-flex p-flex-column" style="flex: 1">
+            <div class="p-text-center">
+                <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+                <h4>{{message.summary}}</h4>
+                <p>{{message.detail}}</p>
+            </div>
+            <div class="p-grid p-fluid">
+                <div class="p-col-6">
+                    <button type="button" pButton (click)="ConfirmarEliminarVinculo()" label="Yes" class="p-button-success"></button>
+                </div>
+                <div class="p-col-6">
+                    <button type="button" pButton (click)="RechazarEliminarVinculo()" label="No" class="p-button-secondary"></button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-toast>

@@ -3,58 +3,58 @@
     <div class="card">
         <div class="titulo">COMUNICADOS</div>
         <p-table #dt [value]="comunicados" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
-                [rowsPerPageOptions]="[10,15,20]" [loading]="loading" styleClass="p-datatable-comunicados" [paginator]="true"
-                currentPageReportTemplate="Mostrando del {first} al {last} de {totalRecords} comunicados"
-                [globalFilterFields]="['fecha','visible']" [rowHover]="true">
+            [rowsPerPageOptions]="[10,15,20]" [loading]="loading" styleClass="p-datatable-comunicados" [paginator]="true"
+            currentPageReportTemplate="Mostrando del {first} al {last} de {totalRecords} comunicados"
+            [globalFilterFields]="['fecha','visible']" [rowHover]="true">
 
-                <ng-template pTemplate="caption">
-                    <div class="p-d-flex">
-                        <p-button (click)="displayModalAgregarComunicado = true; comunicado = {}" label="Agregar Comunicado" icon="pi pi-plus"
-                            styleClass="p-button-rounded"></p-button>
-                        <span class="p-input-icon-left p-ml-auto">
-                            <i class="pi pi-search"></i>
-                            <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
-                                placeholder="Buscar comunicado" />
-                        </span>
-                    </div>
-                </ng-template>
+            <ng-template pTemplate="caption">
+                <div class="p-d-flex">
+                    <p-button (click)="displayModalAgregarComunicado = true; comunicado = {}" label="Agregar Comunicado" icon="pi pi-plus"
+                        styleClass="p-button-rounded"></p-button>
+                    <span class="p-input-icon-left p-ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                            placeholder="Buscar comunicado" />
+                    </span>
+                </div>
+            </ng-template>
 
-                <ng-template pTemplate="header">
-                    <tr>
-                        <th style="text-align: center; width: 2rem"></th>
-                        <th style="text-align: center; width: 16rem">Imagen</th>
-                        <th style="text-align: center; width: 10rem">Fecha</th>
-                        <th style="text-align: center; width: 8rem">Visibilidad</th>
-                        <th style="text-align: center; width: 18rem">Acciones</th>
-                    </tr>
-                </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="text-align: center; width: 2rem"></th>
+                    <th style="text-align: center; width: 16rem">Imagen</th>
+                    <th style="text-align: center; width: 10rem">Fecha</th>
+                    <th style="text-align: center; width: 8rem">Visibilidad</th>
+                    <th style="text-align: center; width: 18rem">Acciones</th>
+                </tr>
+            </ng-template>
 
-                <ng-template pTemplate="body" let-comunicado>
-                    <tr>
-                        <td style="text-align: center"></td>
-                        <td style="text-align: center">
-                            <img class="imgComunicado p-shadow-4" src="{{comunicado.host_imagen}}/{{comunicado.nombre_imagen}}" alt="">
-                        </td>
-                        <td style="text-align: center">
-                            <span class="text">{{ comunicado.fecha_comunicado }}</span>
-                        </td>
-                        <td style="text-align: center;">
-                            <p-toggleButton (onChange)="cambioVisibilidad($event, comunicado.id_comunicado)" styleClass="p-button-rounded" [ngModel]="comunicado.visible" onIcon="fas fa-eye" offIcon="fas fa-eye-slash"></p-toggleButton>
-                        </td>
-                        <td style="text-align: center">
-                            <button (click)="editarComunicado(comunicado)" pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-warning p-mr-2"></button>
-                            <button (click)="eliminarComunicado(comunicado.id_comunicado)" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
-                        </td>
-                    </tr>
-                </ng-template>
+            <ng-template pTemplate="body" let-comunicado>
+                <tr>
+                    <td style="text-align: center"></td>
+                    <td style="text-align: center">
+                        <img class="imgComunicado p-shadow-4" src="{{comunicado.host_imagen}}/{{comunicado.nombre_imagen}}" alt="">
+                    </td>
+                    <td style="text-align: center">
+                        <span class="text">{{ comunicado.fecha_comunicado }}</span>
+                    </td>
+                    <td style="text-align: center;">
+                        <p-toggleButton (onChange)="cambioVisibilidad($event, comunicado.id_comunicado)" styleClass="p-button-rounded" [ngModel]="comunicado.visible" onIcon="fas fa-eye" offIcon="fas fa-eye-slash"></p-toggleButton>
+                    </td>
+                    <td style="text-align: center">
+                        <button (click)="editarComunicado(comunicado)" pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-warning p-mr-2"></button>
+                        <button (click)="eliminarComunicado(comunicado.id_comunicado)" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
+                    </td>
+                </tr>
+            </ng-template>
 
-                <ng-template pTemplate="emptymessage">
-                    <tr>
-                        <td colspan="5">Ningún comunicado encontrado.</td>
-                    </tr>
-                </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="5">Ningún comunicado encontrado.</td>
+                </tr>
+            </ng-template>
 
-            </p-table>
+        </p-table>
     </div>
 </div>
 
