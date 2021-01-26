@@ -1,8 +1,50 @@
-
 <div class="p-grid">
     <div class="card">
         <div class="titulo">MENUS</div>
-        <p-treeTable [value]="menuitems" [loading]="loading" >
+
+        <p-treeTable [value]="items" [lazy]="true" 
+        (onLazyLoad)="loadNodes()" [totalRecords]="1000" [loading]="loading" (onNodeExpand)="onNodeExpand($event)">
+        <ng-template pTemplate="header" let-columns>
+            <tr>
+                <th style="text-align: center;">Nombre</th>
+                    <th style="text-align: center;">Orden</th>
+                    <th style="text-align: center;">Ruta</th>
+                    <th style="text-align: center;">Visible</th>
+                    <th style="text-align: center;">Acciones</th>
+            
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowNode let-rowData="rowData" >
+            <tr>
+                <td>
+                    <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
+                    {{rowData.nombre}}
+                </td>
+                <td style="text-align: center;"> {{rowData.orden}}  </td>
+                <td style="text-align: center;"> {{rowData.ruta}}  </td>
+                <td style="text-align: center;">
+                    <p-toggleButton (onChange)="cambiovisibilidad($event)" [(ngModel)]="rowData.visible" styleClass="p-button-rounded" onIcon="fas fa-eye"
+                        offIcon="fas fa-eye-slash"></p-toggleButton>
+                </td>
+                <td style="text-align: center;"> acciones </td>
+            </tr>
+        </ng-template>
+    </p-treeTable>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!--p-treeTable [value]="menuitems" [loading]="loading" >
             <ng-template pTemplate="header">
                 <tr>
                     <th style="text-align: center;">Nombre</th>
@@ -36,7 +78,7 @@
                 </tr>
             </ng-template>
 
-        </p-treeTable>
+        </p-treeTable-->
     </div>
 </div>
 
@@ -50,10 +92,12 @@
             </div>
             <div class="p-grid p-fluid">
                 <div class="p-col-6">
-                    <button type="button" pButton (click)="confirmarEliminarMenu()" label="Yes" class="p-button-success"></button>
+                    <button type="button" pButton (click)="confirmarEliminarMenu()" label="Yes"
+                        class="p-button-success"></button>
                 </div>
                 <div class="p-col-6">
-                    <button type="button" pButton (click)="rechazarEliminarMenu()" label="No" class="p-button-secondary"></button>
+                    <button type="button" pButton (click)="rechazarEliminarMenu()" label="No"
+                        class="p-button-secondary"></button>
                 </div>
             </div>
         </div>

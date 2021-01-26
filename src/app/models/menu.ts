@@ -1,6 +1,6 @@
-export interface MenuNode {
-    data: any;
-    children: MenuNode[];
-    leaf: boolean;
-    expanded: boolean;
+export interface Menu {
+    nombre: string;
+    orden: number;
+    ruta: string;
+    visible: boolean;
 }

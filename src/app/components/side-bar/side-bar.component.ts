@@ -24,8 +24,7 @@ export class SideBarComponent implements OnInit {
             {
                 label: 'Menus', icon: 'fas fa-bars',
                 items: [
-                    {label: 'Ver todos', icon: 'pi pi-fw pi-list', routerLink: 'menus/listar'},
-                    {label: 'Agregar', icon:' pi pi-fw pi-plus', routerLink: 'menus/agregar'}
+                    {label: 'Ver todos', icon: 'pi pi-fw pi-list', routerLink: 'menus/listar'}
                 ]
             },
             {
