@@ -33,25 +33,29 @@ export class GestionMenusComponent implements OnInit {
   loadNodes() {
     this.loading = true;
     this.menuService.getMenuItems(0).then(menuitems => {
-     // this.items = menuitems
-      this.loading = false;
-      this.items = [];
-      console.log(menuitems.length)
+     
 
-      for (let i = 0; i < menuitems.length; i++) {
-        let node = {
-          data: {
-            nombre: menuitems[i]['nombre'],
-            orden: menuitems[i]['orden'],
-            ruta: menuitems[i]['ruta'],
-            visible: menuitems[i]['visible'],
-            id_menu: menuitems[i]['id_menu']
-          },
-          leaf: this.isNodoFinal(menuitems[i]['id_menu'])
-        };
+        this.loading = false;
+        this.items = [];
+        let node ;
 
-        this.items.push(node);
-      }
+        for (let i = 0; i < menuitems.length; i++) {
+
+          node = {
+
+            data: {
+              nombre: menuitems[i]['nombre'],
+              orden: menuitems[i]['orden'],
+              ruta: menuitems[i]['ruta'],
+              visible: menuitems[i]['visible'],
+              id_menu: menuitems[i]['id_menu']
+            },
+            leaf:  (menuitems[i]['numero_hijos'] >0) ? false :true
+            
+          };
+            this.items.push(node);
+        }
+
     });
 
   }
@@ -60,45 +64,87 @@ export class GestionMenusComponent implements OnInit {
     this.loading = true;
     let id_menu = event.node.data.id_menu;
 
-    
+
     this.menuService.getMenuItems(id_menu).then(menuitems => {
       this.loading = false;
       const node = event.node;
       let childs = [];
       for (let i = 0; i < menuitems.length; i++) {
-        
-        let child = 
-          
-          {
-            data: {
-              nombre: menuitems[i]['nombre'],
-              orden: menuitems[i]['orden'],
-              ruta: menuitems[i]['ruta'],
-              visible: menuitems[i]['visible'],
-              id_menu: menuitems[i]['id_menu']
-            },
-            leaf: this.isNodoFinal(menuitems[i]['id_menu'])
-          }
-        childs.push(child);
-      }
-      node.children =  childs;
+        let child =
 
-      this.items = [...this.items];
+        {
+          data: {
+            nombre: menuitems[i]['nombre'],
+            orden: menuitems[i]['orden'],
+            ruta: menuitems[i]['ruta'],
+            visible: menuitems[i]['visible'],
+            id_menu: menuitems[i]['id_menu']
+          },
+
+          leaf:  (menuitems[i]['numero_hijos'] >0) ? false :true
+        }
+        
+        childs.push(child);
+
+      }
+        node.children = childs;
+
+        this.items = [...this.items];
 
     });
 
-  
+
   }
 
 
- isNodoFinal(id_menu:number):any{
-  this.menuService.isNodoFinal(id_menu).then(data =>{
-   return data.isNodoFinal;
-    
-  });
+  cambiovisibilidad(e, id_menu:number) {
+    this.loading = true;
+    var isVisible = e.checked;
+    var visibilidad = isVisible ? 'activa' : 'inactiva';
+
+    this.menuService.setVisibilidad(id_menu, isVisible).subscribe(data => {
+      if (data) {
+        this.mensajeService.mensajeCorrecto('Se cambió la visibilidad a ' + visibilidad + ' de manera correcta');
+        this.loading = false;
+        this.loadNodes();
+      }
+    }, (err) => {
+      this.mensajeService.mensajeIncorrecto('No se logró cambiar la visibilidad');
+      this.loading = false;
+      this.loadNodes();
+    }
+    );
+  }
+
+
+
   
- 
- }
+  eliminarMenu(id: number){
+    this.mensajeService.clear('toast-menu');
+    this.mensajeService.confirmarAccion('toast-menu','¿Estás seguro de que quieres eliminar el menú?', 'info');
+  }
+
+  
+  confirmarEliminarMenu(){
+    this.loading = true;
+    this.mensajeService.clear('toast-menu');
+    this.menuService.eliminarMenu(1).subscribe(data => {
+      if (data) {
+        this.mensajeService.mensajeCorrecto('Se eliminó el menú de manera correcta');
+        this.loading = false;
+        this.loadNodes();
+      }
+    }, (err) => {
+      this.mensajeService.mensajeIncorrecto('No se logró eliminar el menú');
+      this.loading = false;
+      this.loadNodes();
+    }
+    );
+  }
+
+  rechazarEliminarMenu(){
+    this.mensajeService.clear('toast-menu');
+  }
 
   /*
     getMenuItems() {
@@ -107,50 +153,9 @@ export class GestionMenusComponent implements OnInit {
   
   
   
-    cambiovisibilidad(e) {
-      this.loading = true;
-      var isVisible = e.checked;
-      var visibilidad = isVisible ? 'activa' : 'inactiva';
+
+
   
-      this.menuService.setVisibilidad(1, isVisible).subscribe(data => {
-        if (data) {
-          this.mensajeService.mensajeCorrecto('Se cambió la visibilidad a ' + visibilidad + ' de manera correcta');
-          this.loading = false;
-          this.getMenuItems();
-        }
-      }, (err) => {
-        this.mensajeService.mensajeIncorrecto('No se logró cambiar la visibilidad');
-        this.loading = false;
-        this.getMenuItems();
-      }
-      );
-    }
-  
-    eliminarMenu(id: number){
-      this.mensajeService.clear('toast-menu');
-      this.mensajeService.confirmarAccion('toast-menu','¿Estás seguro de que quieres eliminar el menú?', 'info');
-    }
-  
-    confirmarEliminarMenu(){
-      this.loading = true;
-      this.mensajeService.clear('toast-menu');
-      this.menuService.eliminarMenu(1).subscribe(data => {
-        if (data) {
-          this.mensajeService.mensajeCorrecto('Se eliminó el menú de manera correcta');
-          this.loading = false;
-          this.getMenuItems();
-        }
-      }, (err) => {
-        this.mensajeService.mensajeIncorrecto('No se logró eliminar el menú');
-        this.loading = false;
-        this.getMenuItems();
-      }
-      );
-    }
-  
-    rechazarEliminarMenu(){
-      this.mensajeService.clear('toast-menu');
-    }
   
     cambioTexto(){
       this.loading = true;

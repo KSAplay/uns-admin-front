@@ -16,17 +16,28 @@
         </ng-template>
         <ng-template pTemplate="body" let-rowNode let-rowData="rowData" >
             <tr>
-                <td>
+                <td ttEditableColumn>
                     <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
-                    {{rowData.nombre}}
+                    <p-treeTableCellEditor>
+                        <ng-template pTemplate="input">
+                            <input (change)="cambioTexto()" pInputText type="text" [(ngModel)]="rowData.nombre">
+                        </ng-template>
+                        <ng-template pTemplate="output">  {{rowData.nombre}}</ng-template>
+                    </p-treeTableCellEditor>
+
+
+
+                  
                 </td>
                 <td style="text-align: center;"> {{rowData.orden}}  </td>
                 <td style="text-align: center;"> {{rowData.ruta}}  </td>
                 <td style="text-align: center;">
-                    <p-toggleButton (onChange)="cambiovisibilidad($event)" [(ngModel)]="rowData.visible" styleClass="p-button-rounded" onIcon="fas fa-eye"
+                    <p-toggleButton (onChange)="cambiovisibilidad($event,rowData.id_menu)" [(ngModel)]="rowData.visible" styleClass="p-button-rounded" onIcon="fas fa-eye"
                         offIcon="fas fa-eye-slash"></p-toggleButton>
                 </td>
-                <td style="text-align: center;"> acciones </td>
+                <td style="text-align: center;"> 
+                    <button (click)="eliminarMenu(1)" pButton icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
+                 </td>
             </tr>
         </ng-template>
     </p-treeTable>
