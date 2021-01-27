@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "uns-admin-front"
+  "defaultProject": "uns-admin-front",
+  "cli": {
+    "analytics": "e2956947-92ea-47e4-affc-07c8e75edad0"
+  }
 }

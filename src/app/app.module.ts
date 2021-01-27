@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { PrimengModule } from './primeng/primeng.module';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -28,7 +27,7 @@ import { NotPageComponent } from './components/not-page/not-page.component';
 import { GestionComunicadosComponent } from './components/gestion-comunicados/gestion-comunicados.component';
 import { AgregarComunicadosComponent } from './components/gestion-comunicados/agregar-comunicados/agregar-comunicados.component';
 import { MessageService } from 'primeng/api';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,8 +57,8 @@ import { FormsModule } from '@angular/forms';
     PrimengModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    FormsModule
-
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     MessageService
