@@ -2,12 +2,11 @@
     <div class="card">
         <div class="titulo">MENUS</div>
 
-        <p-treeTable [value]="items" [lazy]="true" 
+        <p-treeTable [value]="items" [lazy]="true"  selectionMode="single"
         (onLazyLoad)="loadNodes()" [totalRecords]="1000" [loading]="loading" (onNodeExpand)="onNodeExpand($event)">
-        <ng-template pTemplate="header" let-columns>
+        <ng-template pTemplate="header" let-column >
             <tr>
                 <th style="text-align: center;">Nombre</th>
-                    <th style="text-align: center;">Orden</th>
                     <th style="text-align: center;">Ruta</th>
                     <th style="text-align: center;">Visible</th>
                     <th style="text-align: center;">Acciones</th>
@@ -15,39 +14,35 @@
             </tr>
         </ng-template>
         <ng-template pTemplate="body" let-rowNode let-rowData="rowData" >
-            <tr>
+            <tr [ttSelectableRow]="rowNode">
                 <td ttEditableColumn>
                     <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
                     <p-treeTableCellEditor>
                         <ng-template pTemplate="input">
-                            <input (change)="cambioTexto()" pInputText type="text" [(ngModel)]="rowData.nombre">
+                            <input   (keydown.enter)="cambioTexto(rowData.id_menu,rowData.nombre)" (change)="cambioTexto(rowData.id_menu,rowData.nombre)" pInputText type="text" [(ngModel)]="rowData.nombre">
                         </ng-template>
-                        <ng-template pTemplate="output">  {{rowData.nombre}}</ng-template>
+                        <ng-template pTemplate="output"> [{{rowData.orden}}] {{rowData.nombre}}</ng-template>
                     </p-treeTableCellEditor>
 
 
-
-                  
                 </td>
-                <td style="text-align: center;"> {{rowData.orden}}  </td>
-                <td style="text-align: center;"> {{rowData.ruta}}  </td>
+                <td style="text-align: center;"> 
+                    <div *ngIf="rowData.ruta == null">
+                        Ninguna
+                    </div>
+                    {{rowData.ruta}}
+                </td>
                 <td style="text-align: center;">
                     <p-toggleButton (onChange)="cambiovisibilidad($event,rowData.id_menu)" [(ngModel)]="rowData.visible" styleClass="p-button-rounded" onIcon="fas fa-eye"
                         offIcon="fas fa-eye-slash"></p-toggleButton>
                 </td>
                 <td style="text-align: center;"> 
-                    <button (click)="eliminarMenu(1)" pButton icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
+                    <button (click)="abrirModalOrdenar(rowData.id_parent)" pButton icon="fas fa-sort" class="p-button-rounded p-button-warning"></button>
+                    <button (click)="eliminarMenu(rowData.id_menu)" pButton icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
                  </td>
             </tr>
         </ng-template>
     </p-treeTable>
-
-
-
-
-
-
-
 
 
 

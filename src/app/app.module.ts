@@ -29,6 +29,9 @@ import { AgregarComunicadosComponent } from './components/gestion-comunicados/ag
 import { MessageService } from 'primeng/api';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {UsuariosService} from './services/usuario.service'
+import { OrdenarMenuComponent } from './components/gestion-menus/ordenar-menu/ordenar-menu.component';
+import { DialogService } from 'primeng/dynamicdialog';
+
 
 @NgModule({
   declarations: [
@@ -50,7 +53,8 @@ import {UsuariosService} from './services/usuario.service'
     InicioComponent,
     NotPageComponent,
     GestionComunicadosComponent,
-    AgregarComunicadosComponent
+    AgregarComunicadosComponent,
+    OrdenarMenuComponent
     
   ],
   imports: [
@@ -64,7 +68,11 @@ import {UsuariosService} from './services/usuario.service'
   ],
   providers: [
     MessageService,
+<<<<<<< HEAD
     UsuariosService
+=======
+    DialogService
+>>>>>>> 6b541e65b5a31fecb2cc8dce100313a6a14302f1
   ],
   bootstrap: [AppComponent]
 })

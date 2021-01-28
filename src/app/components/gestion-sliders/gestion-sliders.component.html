@@ -3,5 +3,68 @@
     <div class="card">
         <div class="titulo">SLIDERS</div>
 
+        <div class="p-col-12 cabecera">
+            <div class="p-d-flex">
+                <p-button (click)="displayModalAgregarSlider = true; slider = {}" label="Agregar Imagen" icon="pi pi-plus"
+                    styleClass="p-button-rounded"></p-button>
+            </div>
+        </div>
+        <div class="p-col-12 carrusel">
+            <p-carousel [value]="sliders" styleClass="Carrucel-Sliders" [numVisible]="2" [numScroll]="2" [circular]="true">
+                <ng-template let-slider pTemplate="item">
+                    <div class="contenedor">
+                        <div class="contenedor-header">
+                            <img class="slider-img p-shadow-4" [src]="slider.host_imagen+'/'+slider.nombre_imagen" [alt]="slider.nombre_imagen">
+                        </div>
+                        <div class="contenedor-footer">
+                            <button (click)="eliminarSlider(slider.id_slider)" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
+                        </div>
+                    </div>
+                </ng-template>
+            </p-carousel>
+        </div>
     </div>
 </div>
+
+<!-- -------------------- MODAL AGREGAR -------------------- -->
+<p-dialog [(visible)]="displayModalAgregarSlider" [modal]="true" [style]="{width: '35vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+    <ng-template pTemplate="content">
+        <div style="text-align: center;">
+
+            <input type="file" style="display: none;" (change)="onPhotoSelected($event)" #photoInput>
+            <img class="p-shadow-4" [src]="photoSelected != null ? photoSelected : 
+            slider.host_imagen != null ? (slider.host_imagen+'/'+slider.nombre_imagen) : noImage" alt="" class="img-fluid p-shadow-4" (click)="photoInput.click()">
+
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div style="text-align: center;">
+            <p-button (click)="crearSlider(slider)" label="Agregar" icon="pi pi-check" styleClass="p-button-success"
+                class="btnSpace"></p-button>
+            <p-button (click)="displayModalAgregarSlider = false; slider = {}; this.file = null; this.photoSelected = null;"
+                label="Cancelar" icon="pi pi-times" styleClass="p-button-danger"></p-button>
+        </div>
+    </ng-template>
+
+</p-dialog>
+
+<p-toast position="center" key="s" (onClose)="RechazarEliminarSlider()" [baseZIndex]="5000">
+    <ng-template let-message pTemplate="message">
+        <div class="p-flex p-flex-column" style="flex: 1">
+            <div class="p-text-center">
+                <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+                <h4>{{message.summary}}</h4>
+                <p>{{message.detail}}</p>
+            </div>
+            <div class="p-grid p-fluid">
+                <div class="p-col-6">
+                    <button type="button" pButton (click)="ConfirmarEliminarSlider()" label="Yes" class="p-button-success"></button>
+                </div>
+                <div class="p-col-6">
+                    <button type="button" pButton (click)="RechazarEliminarSlider()" label="No" class="p-button-secondary"></button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-toast>

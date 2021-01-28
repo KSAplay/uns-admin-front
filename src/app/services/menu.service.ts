@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { HOST } from 'src/assets/shared/var.constant';
-import { Menu } from 'primeng/menu';
+import { Menu } from '../models/menu';
+
 
 @Injectable({
   providedIn: 'root'
@@ -35,24 +36,32 @@ export class MenuService {
   
  
  
-   eliminarMenu(identificador: number){
-     const body = { id: identificador};
+   eliminarMenu(id_menu: number){
  
-     return this.http.post(`${this.url}/eliminar`, body, {
+     return this.http.delete(`${this.url}/${id_menu}`);
+   }
+ 
+   cambiarTexto(id_menu: number, nombreNuevo: string){
+     const body = { nombre: nombreNuevo };
+ 
+     return this.http.put(`${this.url}/${id_menu}/nombre`, body, {
        headers: {
          'content-type': "application/json"
        }
      });
    }
- 
-   cambiarTexto(identificador: number, text: string){
-     const body = { id: identificador, texto: text };
- 
-     return this.http.post(`${this.url}/cambiotexto`, body, {
-       headers: {
-         'content-type': "application/json"
-       }
-     });
-   }
+
+
+     // Cambiar posicion
+  setPosicion(id_menu: number, pos: number){
+    const body = { orden: pos };
+
+    return this.http.put(`${this.url}/${id_menu}/posicion`, body, {
+      headers: {
+        'content-type': "application/json"
+      }
+    });
+  }
+
  
 }
