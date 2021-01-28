@@ -1,6 +1,8 @@
 export interface Menu {
-    nombre: string;
+    id_menu: number;
+    id_parent: number;
+    nombre:string;
     orden: number;
-    ruta: string;
+    ruta :string;
     visible: boolean;
 }

@@ -20,6 +20,7 @@ import {InputTextareaModule} from 'primeng/inputtextarea';
 import {CalendarModule} from 'primeng/calendar';
 import {TreeTableModule} from 'primeng/treetable';
 import {InputMaskModule} from 'primeng/inputmask';
+import {DynamicDialogModule} from 'primeng/dynamicdialog';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import {InputMaskModule} from 'primeng/inputmask';
     InputTextareaModule,
     CalendarModule,
     TreeTableModule,
-    InputMaskModule
+    InputMaskModule,
+    DynamicDialogModule
   ],
   exports:  [
     MegaMenuModule,
@@ -65,7 +67,8 @@ import {InputMaskModule} from 'primeng/inputmask';
     InputTextareaModule,
     CalendarModule,
     TreeTableModule,
-    InputMaskModule
+    InputMaskModule,
+    DynamicDialogModule
   ]
 })
 export class PrimengModule { }

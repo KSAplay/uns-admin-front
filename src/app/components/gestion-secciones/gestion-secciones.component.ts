@@ -93,6 +93,7 @@ export class GestionSeccionesComponent implements OnInit {
     this.getSeccionData();
     this.loading = false;
    }, 500);
+   
   }
 
 
