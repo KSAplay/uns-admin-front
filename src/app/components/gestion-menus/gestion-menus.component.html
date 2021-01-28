@@ -5,17 +5,18 @@
         <p-treeTable [value]="items" [lazy]="true"  selectionMode="single"
         (onLazyLoad)="loadNodes()" [totalRecords]="1000" [loading]="loading" (onNodeExpand)="onNodeExpand($event)">
 
-        <!--ng-template pTemplate="caption">
+        <ng-template pTemplate="caption">
             <div class="p-d-flex">
-                <p-button (click)="abrirModalCrearMenu()" label="Agregar Menu" icon="pi pi-plus"
+                <p-button (click)="abrirModalCrearMenu()" label="Agregar Menu Raiz" icon="pi pi-plus"
                     styleClass="p-button-rounded"></p-button>
-                <span class="p-input-icon-left p-ml-auto">
+                <!--span class="p-input-icon-left p-ml-auto">
                     <i class="pi pi-search"></i>
                     <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
                         placeholder="Buscar noticia" />
-                </span>
+                </span-->
             </div>
-        </ng-template-->
+        </ng-template>
+
         <ng-template pTemplate="header" let-column >
             <tr>
                 <th style="text-align: center;">Nombre</th>
@@ -33,7 +34,7 @@
                         <ng-template pTemplate="input">
                             <input   (keydown.enter)="cambioTexto(rowData.id_menu,rowData.nombre)" (change)="cambioTexto(rowData.id_menu,rowData.nombre)" pInputText type="text" [(ngModel)]="rowData.nombre">
                         </ng-template>
-                        <ng-template pTemplate="output"> [{{rowData.orden}}] {{rowData.nombre}}</ng-template>
+                        <ng-template pTemplate="output"> [{{rowData.orden}}] {{rowData.nombre}} </ng-template>
                     </p-treeTableCellEditor>
 
 
@@ -59,24 +60,41 @@
 
 
 <!-- -------------------- MODAL AGREGAR -------------------- -->
-<!--p-dialog [(visible)]="displayModalCrearMenu" [modal]="true" [style]="{width: '30vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+<p-dialog [(visible)]="displayModalCrearMenu" [modal]="true" [style]="{width: '30vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
     <ng-template pTemplate="content">
         <div style="text-align: center;">
 
             <div class="p-field">
-                <div class="tituloModal">Elegir padre</div>
+                <div class="tituloModal">Elegir nivel padre  </div>
+                <p-dropdown [options]="opcionesNivel" [(ngModel)]="selectedNivel" optionLabel="name"  optionValue="code"></p-dropdown>
               
-                <input type="text" class="p-inputtext" class="fecha" pInputText [ngModel]="menuNuevo.nombre" requerid >
             </div>
+
+            <div *ngIf="selectedNivel=='1'" class="p-field">
+                <p-dropdown [options]="menusNivel1" [(ngModel)]="id_menu_selected" placeholder="Selecciona un padre nivel 1"  optionLabel="nombre"  optionValue="id_menu"></p-dropdown>
+              
+            </div>
+
+            <div *ngIf="selectedNivel=='2'" class="p-field">
+                <p-dropdown [options]="menusNivel2" [(ngModel)]="id_menu_selected" placeholder="Selecciona un padre nivel 2" [group]="true" > </p-dropdown>
+              
+            </div>
+
+
+
+
             <div class="p-field">
                 <div class="tituloModal">Nombre</div>
              
-                <input type="text" class="p-inputtext" class="fecha" pInputText [ngModel]="menuNuevo.nombre" requerid >
+                <input type="text" class="p-inputtext" class="fecha" pInputText [(ngModel)]="menuNuevo.nombre" requerid >
             </div>
+
+
+
             <div class="p-field">
                 <div class="tituloModal">Ruta</div>
              
-                <input type="text" class="p-inputtext" class="fecha" pInputText [ngModel]="menuNuevo.nombre" requerid >
+                <input type="text" class="p-inputtext" class="fecha" pInputText [(ngModel)]="menuNuevo.ruta" requerid >
             </div>
 
         </div>
@@ -85,14 +103,14 @@
 
     <ng-template pTemplate="footer">
         <div style="text-align: center;">
-            <p-button (click)="crearMenu(menuNuevo)" label="Agregar" icon="pi pi-check" styleClass="p-button-success"
+            <p-button (click)="crearMenu()" label="Agregar" icon="pi pi-check" styleClass="p-button-success"
                 class="btnSpace"></p-button>
             <p-button (click)="cerrarModalCrearMenu()"
                 label="Cancelar" icon="pi pi-times" styleClass="p-button-danger"></p-button>
         </div>
     </ng-template>
 
-</p-dialog-->
+</p-dialog>
 
 
 

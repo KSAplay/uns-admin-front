@@ -5,4 +5,5 @@ export class Menu {
     orden: number;
     ruta :string;
     visible: boolean;
+    children: Menu[];
 }
