@@ -68,11 +68,8 @@ import { DialogService } from 'primeng/dynamicdialog';
   ],
   providers: [
     MessageService,
-<<<<<<< HEAD
-    UsuariosService
-=======
+    UsuariosService,
     DialogService
->>>>>>> 6b541e65b5a31fecb2cc8dce100313a6a14302f1
   ],
   bootstrap: [AppComponent]
 })
