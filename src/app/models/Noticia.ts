@@ -1,3 +1,4 @@
+
 export class Noticia{
     id_noticia:number;
     titular: string;
