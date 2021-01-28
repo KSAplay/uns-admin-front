@@ -1,3 +1,4 @@
+
 export class Comunicado{
     id_comunicado: number;
     nombre_imagen: string;
