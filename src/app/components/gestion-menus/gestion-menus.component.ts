@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TreeNode } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
+import { Menu } from 'src/app/models/menu';
 import { MensajeService } from 'src/app/services/mensaje.service';
 import { MenuService } from 'src/app/services/menu.service';
 import { OrdenarMenuComponent } from './ordenar-menu/ordenar-menu.component';
@@ -15,8 +16,11 @@ export class GestionMenusComponent implements OnInit {
   items: TreeNode[];
   loading: boolean;
 
+  displayModalCrearMenu: boolean;
 
   id_menu: number;
+
+  menuNuevo: Menu;
 
 
   constructor(private mensajeService: MensajeService, private menuService: MenuService, public dialogService: DialogService) { }
@@ -185,6 +189,19 @@ export class GestionMenusComponent implements OnInit {
       }
     });
 
+  }
+
+  crearMenu(menu: Menu){
+
+  }
+
+  abrirModalCrearMenu(){
+    this.menuNuevo = new Menu;
+    this.displayModalCrearMenu=true;
+  }
+
+  cerrarModalCrearMenu(){
+    this.displayModalCrearMenu=false;
   }
 
 }

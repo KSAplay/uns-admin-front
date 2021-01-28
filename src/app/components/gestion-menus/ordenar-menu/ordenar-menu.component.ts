@@ -35,7 +35,7 @@ export class OrdenarMenuComponent implements OnInit {
   cambiarOrden(){
     this.loading = true;
     this.menus.forEach((value,index)=>{
-      this.menuService.setPosicion(value.id_menu,index).subscribe(data =>{
+      this.menuService.setPosicion(value.id_menu,index+1).subscribe(data =>{
         if(data){
           this.mensajeService.mensajeCorrecto('Se cambió el orden de manera correcta');
         }
