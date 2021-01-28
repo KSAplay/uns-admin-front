@@ -28,6 +28,8 @@ import { GestionComunicadosComponent } from './components/gestion-comunicados/ge
 import { AgregarComunicadosComponent } from './components/gestion-comunicados/agregar-comunicados/agregar-comunicados.component';
 import { MessageService } from 'primeng/api';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {UsuariosService} from './services/usuario.service'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,7 +63,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   providers: [
-    MessageService
+    MessageService,
+    UsuariosService
   ],
   bootstrap: [AppComponent]
 })

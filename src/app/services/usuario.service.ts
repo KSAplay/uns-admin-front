@@ -2,11 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Usuario, AuhenticarUsuario, RegistrarUsuario } from '../models/Usuario';
 import { HOST } from 'src/assets/shared/var.constant';
+import { MensajeService } from 'src/app/services/mensaje.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class ComunicadosService {
+export class UsuariosService {
 
   // URL BACKEND
   url: string = `${HOST}`
@@ -19,13 +21,16 @@ export class ComunicadosService {
   IniciarSesion(credenciales: AuhenticarUsuario): Promise<Usuario> {
     return this.http.post<any>(`${this.url}/iniciarSession`, credenciales)
       .toPromise()
-      .then(data => { return data; });
+      .then(data => { 
+        localStorage.setItem("x-session", JSON.stringify(data));
+        return data;
+       });
   }
   // ----------------------------------------------------------------------------------
   //                              REGISTRAR USUARIO
   // ----------------------------------------------------------------------------------
   RegistrarUsuario(data: RegistrarUsuario): Promise<Usuario> {
-    return this.http.post<any>(`${this.url}/iniciarSession`, data)
+    return this.http.post<any>(`${this.url}/registrarUsuario`, data)
       .toPromise()
       .then(data => { return data; });
   }

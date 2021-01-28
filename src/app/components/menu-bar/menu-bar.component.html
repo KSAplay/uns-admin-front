@@ -7,7 +7,7 @@
 
     <ng-template pTemplate="end">
         <img src="../../../assets/resources/menu-bar/usuariohombre.png" height="40" class="fotoAdmin">
-        <div class="admin">Kenny Saavedra Altuna</div>
+        <div class="admin">{{usuarioName}}</div>
         <button (click)="cerrarSesion()" pButton pRipple icon="fas fa-sign-out-alt" class="btnAdmin p-button-sm p-button-rounded p-button-danger"></button>
     </ng-template>
 </p-menubar>
