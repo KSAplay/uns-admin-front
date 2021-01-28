@@ -25,6 +25,15 @@ export class MensajeService {
     this.messageService.add({severity:'error', summary: '¡Ups!, guardado incorrecto', detail: mensaje}); 
   }
 
+  loginCorrecto(mensaje: any) {
+    this.messageService.add({severity:'success', summary: '¡Bienvenido!', detail: mensaje}); 
+  }
+
+  loginIncorrecto(mensaje: string) {
+    this.messageService.add({severity:'error', summary: '¡Ups!, Error de Inicio de Sesión', detail: mensaje}); 
+  }
+
+
   confirmarAccion(key: string, pregunta: string, type: string){
       this.messageService.clear();
       this.messageService.add({key: key, sticky: true, severity: type, summary: pregunta, detail:'Confirmar para proceder'});

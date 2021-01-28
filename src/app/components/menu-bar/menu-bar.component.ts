@@ -46,6 +46,7 @@ export class MenuBarComponent implements OnInit {
 
     const session: any = JSON.parse(localStorage.getItem("x-session"));
     this.usuarioName = session['nombres']+' '+session['apellidos']
+    this.mensajeService.loginCorrecto(this.usuarioName);
   }
 
   cerrarSesion(){

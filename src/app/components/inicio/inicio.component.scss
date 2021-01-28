@@ -1,5 +1,7 @@
 
 @import '../../../assets/shared/colores.scss';
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 
 svg {
   position: absolute;
@@ -17,7 +19,7 @@ svg {
   margin-top: -100px;
   margin-left: 50px;
   color: #2F3242;
-  font-family: Roboto;
+  font-family: 'Robot', sans-serif;
   font-weight: 300;
 }
 .message-box h1 {
