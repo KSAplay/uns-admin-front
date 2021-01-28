@@ -1,4 +1,4 @@
-export interface Menu {
+export class Menu {
     id_menu: number;
     id_parent: number;
     nombre:string;

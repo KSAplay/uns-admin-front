@@ -4,11 +4,23 @@
 
         <p-treeTable [value]="items" [lazy]="true"  selectionMode="single"
         (onLazyLoad)="loadNodes()" [totalRecords]="1000" [loading]="loading" (onNodeExpand)="onNodeExpand($event)">
+
+        <!--ng-template pTemplate="caption">
+            <div class="p-d-flex">
+                <p-button (click)="abrirModalCrearMenu()" label="Agregar Menu" icon="pi pi-plus"
+                    styleClass="p-button-rounded"></p-button>
+                <span class="p-input-icon-left p-ml-auto">
+                    <i class="pi pi-search"></i>
+                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                        placeholder="Buscar noticia" />
+                </span>
+            </div>
+        </ng-template-->
         <ng-template pTemplate="header" let-column >
             <tr>
                 <th style="text-align: center;">Nombre</th>
                     <th style="text-align: center;">Ruta</th>
-                    <th style="text-align: center;">Visible</th>
+                    <th style="text-align: center;">Visibilidad</th>
                     <th style="text-align: center;">Acciones</th>
             
             </tr>
@@ -46,45 +58,44 @@
 
 
 
+<!-- -------------------- MODAL AGREGAR -------------------- -->
+<!--p-dialog [(visible)]="displayModalCrearMenu" [modal]="true" [style]="{width: '30vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+    <ng-template pTemplate="content">
+        <div style="text-align: center;">
+
+            <div class="p-field">
+                <div class="tituloModal">Elegir padre</div>
+              
+                <input type="text" class="p-inputtext" class="fecha" pInputText [ngModel]="menuNuevo.nombre" requerid >
+            </div>
+            <div class="p-field">
+                <div class="tituloModal">Nombre</div>
+             
+                <input type="text" class="p-inputtext" class="fecha" pInputText [ngModel]="menuNuevo.nombre" requerid >
+            </div>
+            <div class="p-field">
+                <div class="tituloModal">Ruta</div>
+             
+                <input type="text" class="p-inputtext" class="fecha" pInputText [ngModel]="menuNuevo.nombre" requerid >
+            </div>
+
+        </div>
+
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <div style="text-align: center;">
+            <p-button (click)="crearMenu(menuNuevo)" label="Agregar" icon="pi pi-check" styleClass="p-button-success"
+                class="btnSpace"></p-button>
+            <p-button (click)="cerrarModalCrearMenu()"
+                label="Cancelar" icon="pi pi-times" styleClass="p-button-danger"></p-button>
+        </div>
+    </ng-template>
+
+</p-dialog-->
 
 
 
-
-        <!--p-treeTable [value]="menuitems" [loading]="loading" >
-            <ng-template pTemplate="header">
-                <tr>
-                    <th style="text-align: center;">Nombre</th>
-                    <th style="text-align: center;">Visibilidad</th>
-                    <th style="text-align: center;">Acciones</th>
-                </tr>
-            </ng-template>
-
-            <ng-template pTemplate="body" let-rowNode let-menuitem="rowData">
-                <tr [ttRow]="rowNode">
-                    <td ttEditableColumn>
-
-                        <p-treeTableToggler [rowNode]="rowNode"></p-treeTableToggler>
-
-                        <p-treeTableCellEditor>
-                            <ng-template pTemplate="input">
-                                <input (change)="cambioTexto()" pInputText type="text" [(ngModel)]="menuitem.name">
-                            </ng-template>
-                            <ng-template pTemplate="output">{{menuitem.name}}</ng-template>
-                        </p-treeTableCellEditor>
-
-                    </td>
-                    <td  style="text-align: center;">
-                        <p-toggleButton (onChange)="cambiovisibilidad($event)" [(ngModel)]="menuitem.visible" styleClass="p-button-rounded" onIcon="fas fa-eye"
-                            offIcon="fas fa-eye-slash"></p-toggleButton>
-                    </td>
-
-                    <td style="text-align: center;">
-                        <button (click)="eliminarMenu(1)" pButton icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
-                    </td>
-                </tr>
-            </ng-template>
-
-        </p-treeTable-->
     </div>
 </div>
 
