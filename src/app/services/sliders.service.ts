@@ -1,64 +1,54 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Vinculo } from '../models/Vinculo';
+import { Slider } from '../models/Slider';
 import { HOST } from 'src/assets/shared/var.constant';
 
 @Injectable({
   providedIn: 'root'
 })
-export class VinculosService {
+export class SlidersService {
 
   // URL BACKEND
-  url: string = `${HOST}/vinculos`;
+  url: string = `${HOST}/sliders`;
 
   constructor(private http: HttpClient) { }
 
   // ----------------------------------------------------------------------------------
-  //                               OBTENER VINCULOS
+  //                               OBTENER SLIDERS
   // ----------------------------------------------------------------------------------
-  getVinculos(): Promise<Vinculo[]> {
+  getSliders(): Promise<Slider[]> {
     return this.http.get<any>(`${this.url}`)
       .toPromise()
-      .then(res => <Vinculo[]>res.data)
+      .then(res => <Slider[]>res.data)
       .then(data => { return data; });
   }
   // ----------------------------------------------------------------------------------
-  //                              VISIBILIDAD VINCULO
+  //                              VISIBILIDAD SLIDER
   // ----------------------------------------------------------------------------------
-  setVisibilidad(id_vinculo: number, vis: boolean) {
+  setVisibilidad(id_slider: number, vis: boolean) {
 
     const body = { visible: vis };
 
-    return this.http.put(`${this.url}/${id_vinculo}/visible`, body, {
+    return this.http.put(`${this.url}/${id_slider}/visible`, body, {
       headers: {
         'content-type': "application/json"
       }
     });
   }
-  // ----------------------------------------------------------------------------------
-  //                              ACTUALIZAR VINCULO
-  // ----------------------------------------------------------------------------------
-  actualizarVinculo(id_vinculo: number, vinculo: Vinculo, img: File){
-
-    var body = new FormData();
-    body.append('imagen', img);
-
-    return this.http.put(`${this.url}/${id_vinculo}`, body);
-  }
 
   // ----------------------------------------------------------------------------------
-  //                                 CREAR VINCULO
+  //                                 CREAR SLIDER
   // ----------------------------------------------------------------------------------
-  crearVinculo(vinculo: Vinculo, img: File){
+  crearSlider(slider: Slider, img: File){
     var body = new FormData();
     body.append('imagen', img);
     return this.http.post(`${this.url}`, body);
   }
 
   // ----------------------------------------------------------------------------------
-  //                                ELIMINAR VINCULO
+  //                                ELIMINAR SLIDER
   // ----------------------------------------------------------------------------------
-  eliminarVinculo(id_vinculo: number){
-    return this.http.delete(`${this.url}/${id_vinculo}`);
+  eliminarSlider(id_slider: number){
+    return this.http.delete(`${this.url}/${id_slider}`);
   }
 }
