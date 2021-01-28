@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 import { PrimengModule } from './primeng/primeng.module';
 
 import { HttpClientModule } from '@angular/common/http';
@@ -31,6 +30,8 @@ import { MessageService } from 'primeng/api';
 import { FormsModule } from '@angular/forms';
 import { OrdenarMenuComponent } from './components/gestion-menus/ordenar-menu/ordenar-menu.component';
 import { DialogService } from 'primeng/dynamicdialog';
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -61,8 +62,8 @@ import { DialogService } from 'primeng/dynamicdialog';
     PrimengModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    FormsModule
-
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     MessageService,

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Noticia } from '../models/noticia';
+import { Noticia } from '../models/Noticia';
 import { HOST } from 'src/assets/shared/var.constant';
 
 @Injectable({

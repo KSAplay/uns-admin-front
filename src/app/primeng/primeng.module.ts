@@ -21,6 +21,7 @@ import {CalendarModule} from 'primeng/calendar';
 import {TreeTableModule} from 'primeng/treetable';
 import {InputMaskModule} from 'primeng/inputmask';
 import {DynamicDialogModule} from 'primeng/dynamicdialog';
+import { CarouselModule } from 'primeng/carousel';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import {DynamicDialogModule} from 'primeng/dynamicdialog';
     CalendarModule,
     TreeTableModule,
     InputMaskModule,
-    DynamicDialogModule
+    DynamicDialogModule,
+    CarouselModule
   ],
   exports:  [
     MegaMenuModule,
@@ -68,7 +70,7 @@ import {DynamicDialogModule} from 'primeng/dynamicdialog';
     CalendarModule,
     TreeTableModule,
     InputMaskModule,
-    DynamicDialogModule
+    CarouselModule
   ]
 })
 export class PrimengModule { }
