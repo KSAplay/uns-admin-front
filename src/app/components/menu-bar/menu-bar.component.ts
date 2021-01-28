@@ -11,6 +11,7 @@ export class MenuBarComponent implements OnInit {
 
    items: MenuItem[];
    opciones: MenuItem[];
+   usuarioName: String;
 
   constructor(private mensajeService: MensajeService) { }
 
@@ -42,6 +43,9 @@ export class MenuBarComponent implements OnInit {
           ]
       }*/
     ];
+
+    const session: any = JSON.parse(localStorage.getItem("x-session"));
+    this.usuarioName = session['nombres']+' '+session['apellidos']
   }
 
   cerrarSesion(){

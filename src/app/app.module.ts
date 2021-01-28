@@ -27,10 +27,11 @@ import { NotPageComponent } from './components/not-page/not-page.component';
 import { GestionComunicadosComponent } from './components/gestion-comunicados/gestion-comunicados.component';
 import { AgregarComunicadosComponent } from './components/gestion-comunicados/agregar-comunicados/agregar-comunicados.component';
 import { MessageService } from 'primeng/api';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {UsuariosService} from './services/usuario.service'
 import { OrdenarMenuComponent } from './components/gestion-menus/ordenar-menu/ordenar-menu.component';
 import { DialogService } from 'primeng/dynamicdialog';
-import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   providers: [
     MessageService,
+    UsuariosService,
     DialogService
   ],
   bootstrap: [AppComponent]
