@@ -7,7 +7,7 @@
 
         <ng-template pTemplate="caption">
             <div class="p-d-flex">
-                <p-button (click)="abrirModalCrearMenu()" label="Agregar Menu Raiz" icon="pi pi-plus"
+                <p-button (click)="abrirModalCrearMenu()" label="Agregar Menu" icon="pi pi-plus"
                     styleClass="p-button-rounded"></p-button>
                 <!--span class="p-input-icon-left p-ml-auto">
                     <i class="pi pi-search"></i>
@@ -19,10 +19,10 @@
 
         <ng-template pTemplate="header" let-column >
             <tr>
-                <th style="text-align: center;">Nombre</th>
-                    <th style="text-align: center;">Ruta</th>
-                    <th style="text-align: center;">Visibilidad</th>
-                    <th style="text-align: center;">Acciones</th>
+                <th style="text-align: center; width: auto">Nombre</th>
+                <th style="text-align: center; width: 25rem">Ruta</th>
+                <th style="text-align: center; width: 7rem">Visibilidad</th>
+                <th style="text-align: center; width: auto">Acciones</th>
             
             </tr>
         </ng-template>
@@ -50,7 +50,7 @@
                         offIcon="fas fa-eye-slash"></p-toggleButton>
                 </td>
                 <td style="text-align: center;"> 
-                    <button (click)="abrirModalOrdenar(rowData.id_parent)" pButton icon="fas fa-sort" class="p-button-rounded p-button-warning"></button>
+                    <button (click)="abrirModalOrdenar(rowData.id_parent)" pButton icon="fas fa-sort" class="p-button-rounded p-button-warning p-mr-2"></button>
                     <button (click)="eliminarMenu(rowData.id_menu)" pButton icon="pi pi-trash" class="p-button-rounded p-button-danger"></button>
                  </td>
             </tr>
@@ -60,12 +60,12 @@
 
 
 <!-- -------------------- MODAL AGREGAR -------------------- -->
-<p-dialog [(visible)]="displayModalCrearMenu" [modal]="true" [style]="{width: '30vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+<p-dialog [(visible)]="displayModalCrearMenu" [modal]="true" [style]="{width: '25vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
     <ng-template pTemplate="content">
         <div style="text-align: center;">
 
             <div class="p-field">
-                <div class="tituloModal">Elegir nivel padre  </div>
+                <div class="tituloModal" style="margin-top: 30px;">Elegir nivel padre</div>
                 <p-dropdown [options]="opcionesNivel" [(ngModel)]="selectedNivel" optionLabel="name"  optionValue="code"></p-dropdown>
               
             </div>
