@@ -14,8 +14,31 @@ export class MenuService {
 
   constructor(private http: HttpClient) { }
 
+  createMenu(menu: Menu,id_pare: number) {
+
+    const body = {  
+      id_parent: id_pare, 
+      nombre: menu.nombre,
+      ruta: menu.ruta};
+    return this.http.post(`${this.url}/`, body, {
+      headers: {
+        'content-type': "application/json"
+      }
+    });
+  }
+
+
+
   getMenuItems(id_parent: number): Promise<Menu[]> {
     return this.http.get<any>(`${this.url}/parent/${id_parent}`)
+      .toPromise()
+      .then(res => <Menu[]>res.data)
+      .then(data => { return data; });
+  }
+
+  
+  getMenus(): Promise<Menu[]> {
+    return this.http.get<any>(`${this.url}`)
       .toPromise()
       .then(res => <Menu[]>res.data)
       .then(data => { return data; });

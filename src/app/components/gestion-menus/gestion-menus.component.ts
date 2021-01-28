@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TreeNode } from 'primeng/api';
+import { SelectItemGroup, TreeNode } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
 import { Menu } from 'src/app/models/menu';
 import { MensajeService } from 'src/app/services/mensaje.service';
@@ -23,10 +23,31 @@ export class GestionMenusComponent implements OnInit {
   menuNuevo: Menu;
 
 
+
+
+  //MODAL
+  selectedNivel: number;
+  opcionesNivel: any[];
+  
+  id_menu_selected: number;
+
+  menusNivel1: Menu[];
+
+  menusNivel2: SelectItemGroup[];
+
   constructor(private mensajeService: MensajeService, private menuService: MenuService, public dialogService: DialogService) { }
 
   ngOnInit(): void {
     this.loading = true;
+
+
+
+    this.opcionesNivel = [
+      {name: 'Sin padre', code: 0},
+      {name: 'Nivel 1', code: 1},
+      {name: 'Nivel 2', code: 2}
+    ];
+
   }
 
 
@@ -191,13 +212,61 @@ export class GestionMenusComponent implements OnInit {
 
   }
 
-  crearMenu(menu: Menu){
-
+  crearMenu(){
+    var id_parent = this.selectedNivel == 0 ? null : this.id_menu_selected;
+    this.menuService.createMenu(this.menuNuevo, id_parent).subscribe(data =>{
+      if (data) {
+        this.mensajeService.mensajeCorrecto('Se guardó la noticia de manera correcta');
+     
+        this.displayModalCrearMenu=false;
+        this.loadNodes();
+      }
+    }, (err) => {
+      this.mensajeService.mensajeIncorrecto('No se logró guardar la noticia');
+      this.displayModalCrearMenu=false;
+      this.loadNodes();
+    })
   }
 
   abrirModalCrearMenu(){
     this.menuNuevo = new Menu;
     this.displayModalCrearMenu=true;
+
+    this.selectedNivel = null;
+    this.id_menu_selected=null;
+  
+    this.cargarMenusNivel1();
+  
+    this.cargarMenusNivel2();
+  }
+
+  cargarMenusNivel2(){
+   
+    
+    this.menuService.getMenus().then(data=>{
+      this.menusNivel2=[];
+
+      this.menusNivel2= data.map(item=>({
+        label: item.nombre, 
+        value: item.id_menu,
+        items: item.children.map(ite => ({
+          label:ite.nombre,
+          value: ite.id_menu
+
+        }))
+      }))
+
+    });
+  }
+
+
+  cargarMenusNivel1(){
+
+    this.menusNivel1= [];
+    this.menuService.getMenuItems(0).then(data=>{
+      this.menusNivel1 = data;
+    });
+
   }
 
   cerrarModalCrearMenu(){
