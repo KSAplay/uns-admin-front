@@ -21,6 +21,7 @@ export class PrincipalComponent implements OnInit {
  
   ConfirmarSalir(){
     this.mensajeService.clear('s');
+    localStorage.removeItem('x-session');
     this.router.navigate(['/login']);
   }
 
