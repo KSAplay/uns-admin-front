@@ -1,0 +1,29 @@
+
+[ ----- PARTICIPACIÓN DEL EQUIPO EN EL PROYECTO ----- ]
+
+Kenny Saavedra Altuna (Líder del Equipo):
+ - Coordinación de los días de trabajo.
+ - Diseño y estructura de las páginas.
+ - Estilo llamativo y dinámico del frontend.
+
+Diego Baes Vásquez:
+ - Definición y programación de funciones.
+ - Programación del Frontend.
+
+Carlos Villar Marín:
+ - Encriptado y Validación del Login.
+ - Agregado de Funciones del Backend
+
+Andrés Medina Charcape:
+ - Estructurado y Modelo del Backend.
+ - Funciones del Login.
+
+Diego Castañeda Chavez:
+ - Agreado de las tablas con sus campos de la Base de Datos.
+ - Llenado de registros de dichas tablas.
+
+Alexander Cubeños Flores:
+ - Agreado de las tablas con sus campos de la Base de Datos.
+ - Llenado de registros de dichas tablas.
+
+(La participación del equipo en el proyecto está relacionado con los conocimientos de cada uno).
